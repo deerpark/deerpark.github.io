@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "jquery": "~2.1.1",
-    "modernizr": "~2.8.1"
+    "modernizr": "~2.8.1",
+    "normalize-css": "^6.0.0",
+    "scrollspy": "^0.1.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",

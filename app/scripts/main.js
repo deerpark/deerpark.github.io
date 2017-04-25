@@ -17,7 +17,7 @@ site.init = function(callback){
 	setTimeout(function(){
 		inView('.section').on('enter', function(el){
 			if(el.id!='profile' && $('#profile .section-icon').data('play') == 1) {
-				closeProfile();
+				site.closeProfile();
 			}
 			TweenMax.set($(el).find('.section-icon'), { opacity: 0, y: 30 });
 			TweenMax.set($(el).find('.title'), { opacity: 0, y: 20 });
@@ -38,7 +38,7 @@ site.init = function(callback){
 	if(callback) callback();
 }
 
-function openProfile() {
+site.openProfile = function() {
 	var _this = '#profile .section-icon';
 	$(_this).data('play',-1);
 	TweenMax.to($(_this).find('.fa-close'), 0.3, { opacity: 1, scale: 1 });
@@ -60,7 +60,7 @@ function openProfile() {
 	}, 0.02);
 }
 
-function closeProfile() {
+site.closeProfile = function() {
 	var _this = '#profile .section-icon';
 	$(_this).data('play',-1);
 	TweenMax.to($(_this).find('.fa-play'), 0.3, { opacity: 1, scale: 1 });
@@ -108,9 +108,9 @@ $(function(){
 	$('#profile .section-icon').data('play',0).on('click', function(e){
 		e.preventDefault();
 		if($(this).data('play') == 0) {
-			openProfile();
+			site.openProfile();
 		} else if($(this).data('play') == 1) {
-			closeProfile();
+			site.closeProfile();
 		}
 	});
 	setTimeout(function(){

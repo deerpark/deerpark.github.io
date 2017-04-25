@@ -5,7 +5,7 @@ var spy = new ScrollSpy('#nav', {
 
 var site = {};
 
-site.init = function(){
+site.init = function(callback){
 	inView('#nav').once('enter', function(el){
 		TweenMax.set(el, { y: -50 });
 		TweenMax.to(el, 0.5, { opacity: 1, y: 0, delay: 0.5 });
@@ -32,6 +32,7 @@ site.init = function(){
 			TweenMax.set($(el).find('.section-body'), { opacity: 0 });
 		});
 	}, 1000);
+	if(callback) callback();
 }
 
 $(function(){
@@ -42,5 +43,7 @@ $(function(){
 			scrollTop: $(hash).offset().top
 		},300);
 	});
-	site.init();
+	setTimeout(function(){
+		site.init(function(){window.scrollTo(0,1);});
+	}, 1000);
 });

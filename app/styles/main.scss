@@ -11,7 +11,6 @@ html, body {
 }
 
 body {
-	background-color: #fff;
 }
 
 h1, p {
@@ -21,6 +20,9 @@ h1, p {
 a {
 	text-decoration: none;
 	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
 	&:active {
 		top: 1px;
 	}
@@ -62,7 +64,9 @@ a {
 			-webkit-opacity: 0;
 			-moz-opacity: 0;
 			opacity: 0;
-			transition: 0.3s all;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			transition: all 0.3s;
 		}
 		&.active {
 			color: #343a40;
@@ -92,19 +96,58 @@ a {
 			-webkit-border-radius: 50%;
 			-moz-border-radius: 50%;
 			border-radius: 50%;
-			position: relative;
+			position: relative; z-index: 2;
 			margin: 0 auto;
 			margin-bottom: 40px;
 			overflow: hidden;
 			color: #dee2e6; font-size: 172px; line-height: 200px; text-align: center;
 			img {
-				position: absolute; top: -107px; left: -204px; z-index: 1;
+				// position: absolute; top: -107px; left: -204px; z-index: 1;
+			}
+			figure {
+				width: 200px; height: 200px; display: block; margin: 0;
+				position: relative; z-index: 2;
+				img {
+					-webkit-transition: all 0.3s;
+					-moz-transition: all 0.3s;
+					transition: all 0.3s;
+				}
+				&:hover {
+					img {
+						-webkit-transform: scale(1.5);
+						-moz-transform: scale(1.5);
+						transform: scale(1.5);
+					}
+					i.dimmed {
+						-webkit-opacity: 0.5;
+						-moz-opacity: 0.5;
+						opacity: 0.5;
+					}
+				}
 			}
 			figure i.fa {
 				width: 200px; height: 200px; display: block;
-				position: absolute; top: 0; left: 5px; z-index: 3;
+				position: absolute; top: 0;
 				font-size: 50px; line-height: 200px; text-align: center;
 				color: #fff;
+				cursor: pointer;
+			}
+			.fa-play {
+				left: 5px;
+				z-index: 4;
+				-webkit-opacity: 1;
+				-moz-opacity: 1;
+				opacity: 1;
+			}
+			.fa-close {
+				left: 0;
+				z-index: 3;
+				-webkit-opacity: 0;
+				-moz-opacity: 0;
+				opacity: 0;
+				-webkit-transform: scale(0);
+				-moz-transform: scale(0);
+				transform: scale(0);
 			}
 			i.dimmed {
 				width: 200px; height: 200px; display: block;
@@ -113,6 +156,36 @@ a {
 				-webkit-opacity: 0.3;
 				-moz-opacity: 0.3;
 				opacity: 0.3;
+				-webkit-transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				transition: all 0.3s;
+			}
+		}
+		.pieces {
+			width: 200px; height: 200px; display: block;
+			margin: 0 auto; padding: 0;
+			margin-top: -240px; margin-bottom: 40px; position: relative; z-index: 1;
+			li {
+				width: 100px; height: 100px; display: block;
+				background-color: #000;
+				position: absolute; top: 50%; left: 50%; overflow: hidden;
+				margin-left: -50px; margin-top: -50px;
+				-webkit-border-radius: 50%;
+				-moz-border-radius: 50%;
+				border-radius: 50%;
+				-webkit-transform: translate(0,0);
+				-moz-transform: translate(0,0);
+				transform: translate(0,0);
+				a {
+					width: 100px; height: 100px; display: block; position: relative; overflow: hidden;
+					&:hover {
+						-webkit-transform: scale(1.5);
+						-moz-transform: scale(1.5);
+						transform: scale(1.5);
+					}
+				}
+				img {
+				}
 			}
 		}
 		.title {
@@ -166,8 +239,12 @@ a {
 	}
 }
 
+#technic .section-body {
+	text-align: center; font-size: 0; line-height: 0;
+}
 .section-gauge {
-	max-width: 320px; margin: 0 auto; margin-bottom: 40px;
+	width: 320px; margin: 0 auto; margin-bottom: 40px;
+	display: inline-block; vertical-align: top;
 	h3 {
 		margin: 0; margin-bottom: 5px; padding: 5px 0; text-align: center;
 		color: #495057; font-weight: 700; font-size: 16px; line-height: 18px;
@@ -286,7 +363,7 @@ a {
 		font-size: 0; line-height: 0; list-style: none;
 		text-align: center;
 		li {
-			width: 150px; height: 190px; margin: 0; margin-right: 20px; margin-bottom: 30px; padding: 0;
+			width: 150px; height: 190px; margin: 0 20px; margin-bottom: 30px; padding: 0;
 			display: inline-block; overflow: hidden;
 			-webkit-border-radius: 5px;
 			-moz-border-radius: 5px;
@@ -303,6 +380,9 @@ a {
 			.thumb {
 				width: 150px; height: 100px; overflow: hidden;
 				margin: 0; margin-bottom: 15px; display: block;
+				img {
+					width: 100%;
+				}
 			}
 			h3.project {
 				margin: 0 10px;
@@ -324,7 +404,7 @@ a {
 				display: block; font-size: 10px; text-align: right;
 			}
 			&:nth-child(even) {
-				margin-right: 0;
+				// margin-right: 0;
 			}
 		}
 	}
@@ -362,7 +442,7 @@ a {
 }
 
 
-#nav, .section-icon, .title, .subtitle, .section-body, #footer {
+#nav, .section-icon, .pieces li, .title, .subtitle, .section-body, #footer {
 	-webkit-opacity: 0;
 	-moz-opacity: 0;
 	opacity: 0;

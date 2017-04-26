@@ -7,81 +7,86 @@ var site = {};
 
 site.init = function(callback){
 	inView('#nav').once('enter', function(el){
-		TweenMax.set(el, { y: -50 });
-		TweenMax.to(el, 0.5, { opacity: 1, y: 0, delay: 0.5 });
+		TweenLite.set(el, { y: -50 });
+		TweenLite.to(el, 0.5, { opacity: 1, y: 0, delay: 0.5 });
 	});
 	inView('#footer').once('enter', function(el){
-		TweenMax.set(el, { y: 50 });
-		TweenMax.to(el, 0.5, { opacity: 1, y: 0, delay: 2.5 });
+		TweenLite.set(el, { y: 50 });
+		TweenLite.to(el, 0.5, { opacity: 1, y: 0, delay: 2.5 });
 	});
 	setTimeout(function(){
 		inView('.section').on('enter', function(el){
 			if(el.id!='profile' && $('#profile .section-icon').data('play') == 1) {
 				site.closeProfile();
 			}
-			TweenMax.set($(el).find('.section-icon'), { opacity: 0, y: 30 });
-			TweenMax.set($(el).find('.title'), { opacity: 0, y: 20 });
-			TweenMax.set($(el).find('.subtitle'), { opacity: 0, y: 15 });
-			TweenMax.set($(el).find('.section-body'), { opacity: 0 });
+			TweenLite.set($(el).find('.section-icon'), { opacity: 0, y: 30 });
+			TweenLite.set($(el).find('.title'), { opacity: 0, y: 20 });
+			TweenLite.set($(el).find('.subtitle'), { opacity: 0, y: 15 });
+			TweenLite.set($(el).find('.section-body'), { opacity: 0 });
 
-			TweenMax.to($(el).find('.section-icon'), 0.5, { opacity: 1, y: 0, delay: 0.5 });
-			TweenMax.to($(el).find('.title'), 0.5, { opacity: 1, y: 0, delay: 0.7 });
-			TweenMax.to($(el).find('.subtitle'), 0.5, { opacity: 1, y: 0, delay: 0.8 });
-			TweenMax.to($(el).find('.section-body'), 1, { opacity: 1, delay: 1 });
+			TweenLite.to($(el).find('.section-icon'), 0.5, { opacity: 1, y: 0, delay: 0.5 });
+			TweenLite.to($(el).find('.title'), 0.5, { opacity: 1, y: 0, delay: 0.7 });
+			TweenLite.to($(el).find('.subtitle'), 0.5, { opacity: 1, y: 0, delay: 0.8 });
+			TweenLite.to($(el).find('.section-body'), 1, { opacity: 1, delay: 1 });
 		}).on('exit', function(el){
-			TweenMax.set($(el).find('.section-icon'), { opacity: 0, y: -30 });
-			TweenMax.set($(el).find('.title'), { opacity: 0, y: -20 });
-			TweenMax.set($(el).find('.subtitle'), { opacity: 0, y: -15 });
-			TweenMax.set($(el).find('.section-body'), { opacity: 0 });
+			TweenLite.set($(el).find('.section-icon'), { opacity: 0, y: -30 });
+			TweenLite.set($(el).find('.title'), { opacity: 0, y: -20 });
+			TweenLite.set($(el).find('.subtitle'), { opacity: 0, y: -15 });
+			TweenLite.set($(el).find('.section-body'), { opacity: 0 });
 		});
 	}, 1000);
-	if(callback) callback();
+	if(callback && typeof callback == 'function') callback();
 }
 
 site.openProfile = function() {
 	var _this = '#profile .section-icon';
 	$(_this).data('play',-1);
-	TweenMax.to($(_this).find('.fa-close'), 0.3, { opacity: 1, scale: 1 });
-	TweenMax.to($(_this).find('.fa-play'), 0.2, { opacity: 0, scale: 0 });
-	TweenMax.to($('#nav'), 0.3, { opacity: 0, y: -50, delay: 0.2 });
-	TweenMax.to($('#footer'), 0.3, { opacity: 0, y: 50, delay: 0.2 });
-	TweenMax.to($('#profile .section-body'), 0.1, { opacity: 1, y: 174, delay: 0.3 });
-	TweenMax.to($('#profile .subtitle'), 0.2, { opacity: 1, y: 174, delay: 0.5 });
-	TweenMax.to($('#profile .title'), 0.3, { opacity: 1, y: 174, delay: 0.53 });
-	TweenMax.to($(_this), 0.2, { scale: 1.2, delay: 0.7 });
-	TweenMax.to($(_this), 0.1, { scale: 1, delay: 0.8 });
-	TweenMax.staggerTo($('.pieces li'), 0.3, {
+	TweenLite.to($(_this).find('.thumb img'), 0.3, { opacity: 0, scale: 2, delay: 0.2, ease: Power4.easeOut });
+	TweenLite.to($(_this).find('.fa-close'), 0.3, { opacity: 1, scale: 1 });
+	TweenLite.to($(_this).find('.fa-play'), 0.2, { opacity: 0, scale: 0 });
+	TweenLite.to($('#nav'), 0.3, { opacity: 0, y: -50, delay: 0.2 });
+	TweenLite.to($('#footer'), 0.3, { opacity: 0, y: 50, delay: 0.2 });
+	TweenLite.to($('#profile .section-body'), 0.1, { opacity: 1, y: 174, delay: 0.3 });
+	TweenLite.to($('#profile .subtitle'), 0.2, { opacity: 1, y: 174, delay: 0.5 });
+	TweenLite.to($('#profile .title'), 0.3, { opacity: 1, y: 174, delay: 0.53 });
+	TweenLite.to($(_this), 0.2, { scale: 1.2, delay: 0.7 });
+	TweenLite.to($(_this), 0.1, { scale: 1, delay: 0.8 });
+	TweenMax.staggerTo($('.pieces li'), 0.5, {
 		cycle : {
 			x : [0,140,200,140,0,-140,-200,-140],
 			y : [-200,-140,0,140,200,140,0,-140]
 		}, opacity: 1, delay: 0.6, ease: Power4.easeOut, onComplete: function(){
 			$('#profile .section-icon').data('play',1);
 		}
-	}, 0.02);
+	}, 0.03);
+	TweenMax.staggerTo($('.pieces li img'), 0.5, {
+		scale: 1, opacity: 1, delay: 0.9, ease: Power4.easeOut
+	}, 0.1);
 }
 
 site.closeProfile = function() {
 	var _this = '#profile .section-icon';
 	$(_this).data('play',-1);
-	TweenMax.to($(_this).find('.fa-play'), 0.3, { opacity: 1, scale: 1 });
-	TweenMax.to($(_this).find('.fa-close'), 0.2, { opacity: 0, scale: 0 });
-	TweenMax.to($(_this), 0.2, { scale: 1.2, delay: 0.2 });
-	TweenMax.to($(_this), 0.1, { scale: 1, delay: 0.3 });
-	TweenMax.staggerTo($('.pieces li'), 0.3, {
+	TweenLite.to($(_this).find('.thumb img'), 0.3, { opacity: 1, scale: 1, delay: 0.2, ease: Power4.easeOut });
+	TweenLite.to($(_this).find('.fa-play'), 0.3, { opacity: 1, scale: 1 });
+	TweenLite.to($(_this).find('.fa-close'), 0.2, { opacity: 0, scale: 0 });
+	TweenLite.to($(_this), 0.2, { scale: 1.2, delay: 0.2 });
+	TweenLite.to($(_this), 0.1, { scale: 1, delay: 0.3 });
+	TweenMax.staggerTo($('.pieces li'), 0.5, {
 		x: 0, y: 0, opacity: 0, delay: 0.2, ease: Power4.easeOut
-	}, 0.02);
-	TweenMax.to($('#profile .title'), 0.1, { opacity: 1, y: 0, delay: 0.3 });
-	TweenMax.to($('#profile .subtitle'), 0.2, { opacity: 1, y: 0, delay: 0.35 });
-	TweenMax.to($('#profile .section-body'), 0.3, { opacity: 1, y: 0, delay: 0.55 });
-	TweenMax.to($('#footer'), 0.3, { opacity: 1, y: 0, delay: 0.7 });
-	TweenMax.to($('#nav'), 0.3, { opacity: 1, y: 0, delay: 0.7, onComplete: function(){
+	}, 0.03);
+	TweenLite.to($('#profile .title'), 0.1, { opacity: 1, y: 0, delay: 0.3 });
+	TweenLite.to($('#profile .subtitle'), 0.2, { opacity: 1, y: 0, delay: 0.35 });
+	TweenLite.to($('#profile .section-body'), 0.3, { opacity: 1, y: 0, delay: 0.55 });
+	TweenLite.to($('#footer'), 0.3, { opacity: 1, y: 0, delay: 0.7 });
+	TweenLite.to($('#nav'), 0.3, { opacity: 1, y: 0, delay: 0.7, onComplete: function(){
+		TweenLite.set($('.pieces li img'), { scale: 0, opacity: 0 });
 		$('#profile .section-icon').data('play',0);
 	}});
 }
 
 $(function(){
     $('.thumb > img').each(function(){
-		console.log($(this).parent().height());
 		var p_width=$(this).parent().width(),
 		p_height=$(this).parent().height(),
 		n_width=$(this).width(),

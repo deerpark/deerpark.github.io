@@ -118,6 +118,8 @@ $(function(){
 			site.closeProfile();
 		}
 	});
+	$('.lb-cancel').addClass('fa fa-spinner fa-pulse fa-3x fa-fw');
+	$('.lb-data .lb-close').addClass('fa fa-window-close');
 	setTimeout(function(){
 		site.init(function(){window.scrollTo(0,1);});
 	}, 1000);

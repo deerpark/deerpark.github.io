@@ -117,12 +117,6 @@ a {
 			margin-bottom: 40px;
 			overflow: hidden;
 			color: #dee2e6; font-size: 172px; line-height: 200px; text-align: center;
-			-webkit-animation: blink 1s infinite;
-			-moz-animation: blink 1s infinite;
-			animation: blink 1s infinite;
-			-webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-			-moz-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
-			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
 			img {
 				// position: absolute; top: -107px; left: -204px; z-index: 1;
 				display: none;
@@ -303,6 +297,14 @@ a {
 	}
 	&#profile .section-header {
 		padding-top: 75px;
+		.section-icon {
+			-webkit-animation: blink 1s infinite;
+			-moz-animation: blink 1s infinite;
+			animation: blink 1s infinite;
+			-webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+			-moz-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+			box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+		}
 	}
 	.section-body {
 		position: relative;

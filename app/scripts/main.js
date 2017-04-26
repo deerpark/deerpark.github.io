@@ -41,7 +41,7 @@ site.init = function(callback){
 site.openProfile = function() {
 	var _this = '#profile .section-icon';
 	$(_this).data('play',-1);
-	TweenLite.to($(_this).find('.thumb img'), 0.3, { opacity: 0, scale: 2, delay: 0.2, ease: Power4.easeOut });
+	TweenLite.to($(_this).find('.thumb img'), 0.5, { opacity: 0, scale: 2, delay: 0.4, ease: Power4.easeOut });
 	TweenLite.to($(_this).find('.fa-close'), 0.3, { opacity: 1, scale: 1 });
 	TweenLite.to($(_this).find('.fa-play'), 0.2, { opacity: 0, scale: 0 });
 	TweenLite.to($('#nav'), 0.3, { opacity: 0, y: -50, delay: 0.2 });

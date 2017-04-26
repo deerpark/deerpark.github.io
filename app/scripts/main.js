@@ -72,13 +72,13 @@ site.closeProfile = function() {
 	TweenLite.to($(_this).find('.fa-close'), 0.2, { opacity: 0, scale: 0 });
 	TweenLite.to($(_this), 0.2, { scale: 1.2, delay: 0.2 });
 	TweenLite.to($(_this), 0.1, { scale: 1, delay: 0.3 });
-	TweenMax.staggerTo($('.pieces li'), 0.5, {
+	TweenMax.staggerTo($('.pieces li'), 0.7, {
 		x: 0, y: 0, opacity: 0, delay: 0.2, ease: Power4.easeOut
 	}, 0.03);
-	TweenLite.to($('#profile .title'), 0.1, { opacity: 1, y: 0, delay: 0.3 });
-	TweenLite.to($('#profile .subtitle'), 0.2, { opacity: 1, y: 0, delay: 0.35 });
-	TweenLite.to($('#profile .section-body'), 0.3, { opacity: 1, y: 0, delay: 0.55 });
-	TweenLite.to($('#footer'), 0.3, { opacity: 1, y: 0, delay: 0.7 });
+	TweenLite.to($('#profile .title'), 0.1, { opacity: 1, y: 0, delay: 0.4 });
+	TweenLite.to($('#profile .subtitle'), 0.2, { opacity: 1, y: 0, delay: 0.45 });
+	TweenLite.to($('#profile .section-body'), 0.3, { opacity: 1, y: 0, delay: 0.65 });
+	TweenLite.to($('#footer'), 0.3, { opacity: 1, y: 0, delay: 0.9 });
 	TweenLite.to($('#nav'), 0.3, { opacity: 1, y: 0, delay: 0.7, onComplete: function(){
 		TweenLite.set($('.pieces li img'), { scale: 0, opacity: 0 });
 		$('#profile .section-icon').data('play',0);

@@ -486,7 +486,7 @@ a {
 				transition: transform 1s;
 			}
 			.front {
-				display: block; z-index: 2;
+				display: block; z-index: 1;
 				color: #868e96; line-height: 18px;
 				.thumb {
 					width: 150px; height: 100px; overflow: hidden;
@@ -516,7 +516,7 @@ a {
 				}
 			}
 			.back {
-				z-index: 1;
+				z-index: 2;
 				overflow: hidden;
 				background: #212529;
 				-webkit-transform: rotateY( 180deg );

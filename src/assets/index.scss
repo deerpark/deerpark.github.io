@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'EliceDigitalBaeum_Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EliceDigitalBaeum_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* var */
+}
+
+* {
+  font-family: 'EliceDigitalBaeum_Regular', sans-serif;
+}
+
+a, button {
+  @apply focus:outline-none;
+}
+
+.font-title {
+  font-family: 'EliceDigitalBaeum_Bold', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, b, strong {
+  font-family: 'EliceDigitalBaeum_Bold', sans-serif;
+}
+
+html,
+body {
+  @apply h-full bg-gray-100 dark:bg-black m-0 p-0 text-gray-600 dark:text-gray-500 xs:overflow-hidden;
+  overscroll-behavior-y: contain;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  @apply w-full max-w-full h-full max-h-screen;
+}

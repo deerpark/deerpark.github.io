@@ -19,10 +19,10 @@ function Profile() {
   const [parentRef, parentBounds] = useMeasure()
   const [ref, bounds] = useMeasure({ scroll: true, polyfill: ResizeObserver })
   const isScroll = parentBounds.y - bounds.y - 70 > 0
-  const navClasses = classNames('absolute left-7 right-7 transition-all', isScrolled.current ? 'top-3' : 'top-7')
+  const headerClasses = classNames('header absolute left-7 right-7 z-20 transition-all')
   const dropFilterClasses = classNames(
     'absolute z-10 -inset-7 bottom-auto backdrop-filter backdrop-blur-sm bg-white bg-opacity-25 pointer-events-none transition-all',
-    isScrolled.current ? 'shadow-md -top-5 h-16' : 'h-24'
+    isScrolled.current ? 'shadow-md' : ''
   )
   useEffect(() => {
     if (isScrolled.current !== isScroll) {
@@ -40,10 +40,15 @@ function Profile() {
   return (
     <Card
       ref={parentRef}
-      className='w-full h-full relative sm:min-w-sm sm:max-w-sm sm:max-h-md overflow-hidden'
+      className='card w-full h-full relative sm:min-w-sm sm:max-w-sm sm:max-h-md overflow-hidden'
       p='p-0'
     >
-      <div className={navClasses}>
+      <header
+        className={headerClasses}
+        style={{
+          top: isScrolled.current ? 'calc(12px + env(safe-area-inset-top))' : 'calc(28px + env(safe-area-inset-top))',
+        }}
+      >
         <div className='relative z-20 flex justify-between'>
           <div className='flex space-x-4 items-center'>
             <Button>
@@ -57,9 +62,19 @@ function Profile() {
             <SettingsIcon />
           </Button>
         </div>
-        <div className={dropFilterClasses} />
-      </div>
-      <div className='absolute inset-0 bottom-16 overflow-y-auto'>
+        <div
+          className={dropFilterClasses}
+          style={{
+            height: isScrolled.current
+              ? 'calc(64px + env(safe-area-inset-top))'
+              : 'calc(84px + env(safe-area-inset-top))',
+            top: isScrolled.current
+              ? 'calc(-20px - env(safe-area-inset-top))'
+              : 'calc(-28px - env(safe-area-inset-top))',
+          }}
+        />
+      </header>
+      <main className='main absolute z-10 inset-0 overflow-y-auto'>
         <div className='p-7 pt-24' ref={ref}>
           <animated.div style={titleProps} className='flex flex-col py-10'>
             <h2 className='text-xl text-gray-800 dark:text-gray-200'>
@@ -75,8 +90,8 @@ function Profile() {
           <div className='h-96' />
           <div className='h-96' />
         </div>
-      </div>
-      <div className='absolute left-0 right-0 bottom-0 h-16 bg-blue-600 rounded-none sm:rounded-b-3xl'>
+      </main>
+      <div className='nav absolute z-10 left-0 right-0 bottom-0 h-16 bg-blue-600 rounded-none sm:rounded-b-3xl'>
         <menu className='h-full p-0 m-0 grid grid-flow-col grid-cols-4 grid-rows-1 place-items-stretch gap-px divide-x divide-white divide-opacity-5'>
           <div className='flex justify-center items-stretch p-2'>
             <Button

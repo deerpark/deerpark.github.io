@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5, h6, b, strong {
 
 html,
 body {
-  @apply h-full bg-gray-100 dark:bg-black m-0 p-0 text-gray-600 dark:text-gray-500 xs:overflow-hidden;
+  @apply h-full bg-blue-600 xs:bg-gray-100 xs:dark:bg-black m-0 p-0 text-gray-600 dark:text-gray-500 xs:overflow-hidden;
   overscroll-behavior-y: contain;
   user-select: none;
   -webkit-font-smoothing: antialiased;
@@ -44,5 +44,14 @@ body {
 }
 
 #root {
-  @apply w-full max-w-full h-full max-h-screen;
+  @apply w-full max-w-full h-full max-h-screen relative z-10;
+}
+
+.header {
+  top: calc(28px + env(safe-area-inset-top));
+}
+
+.main {
+  top: env(safe-area-inset-top);
+  bottom: calc(64px + env(safe-area-inset-bottom));
 }

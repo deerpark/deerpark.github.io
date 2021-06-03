@@ -1,11 +1,13 @@
 import { forwardRef } from 'react'
 import classNames from 'classnames'
 
-function Card({ children, className = '', p }, ref) {
+function Card({ children, className = '', p, rounded = 'sm:rounded-3xl', shadow = 'sm:shadow-lg' }, ref) {
   const classes = classNames(
-    'bg-white dark:bg-black sm:dark:border xs:dark:border-gray-900 xs:dark:border-opacity-50 sm:rounded-3xl sm:shadow-lg',
+    'bg-white dark:bg-black sm:dark:border xs:dark:border-black xs:dark:border-opacity-5',
     className,
-    p
+    p,
+    shadow,
+    rounded
   )
   return (
     <div ref={ref} className={classes}>

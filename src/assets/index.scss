@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5, h6, b, strong {
 
 html,
 body {
-  @apply h-full bg-blue-600 xs:bg-gray-100 xs:dark:bg-black xs:dark:bg-opacity-90 m-0 p-0 text-gray-600 dark:text-gray-500 xs:overflow-hidden;
+  @apply h-full bg-blue-600 dark:bg-black m-0 p-0 text-gray-600 dark:text-gray-500 overflow-hidden;
   overscroll-behavior-y: contain;
   user-select: none;
   -webkit-font-smoothing: antialiased;
@@ -44,30 +44,87 @@ body {
 }
 
 #root {
-  @apply xs:dark:bg-gray-700 xs:dark:bg-opacity-5 w-full max-w-full h-full max-h-screen relative z-10;
+  @apply bg-gray-100 xs:dark:bg-gray-500 xs:dark:bg-opacity-10 w-full max-w-full h-full max-h-screen relative z-10;
 }
 
 .header {
-  top: calc(28px + env(safe-area-inset-top));
+  padding-top: calc(env(safe-area-inset-top) * 0.8);
+  height: calc(88px + env(safe-area-inset-top) * 0.8);
   &--compact {
-    top: calc(12px + env(safe-area-inset-top));
+    padding-top: calc(env(safe-area-inset-top) * 0.8);
+    height: calc(60px + env(safe-area-inset-top) * 0.8);
   }
 }
 
-.backdrop {
-  top: calc(-28px - env(safe-area-inset-top));
-  height: calc(84px + env(safe-area-inset-top));
-  &--compact {
-    top: calc(-12px - env(safe-area-inset-top));
-    height: calc(56px + env(safe-area-inset-top));
-  }
-}
-
-.main {
-  top: env(safe-area-inset-top);
-  bottom: calc(64px + env(safe-area-inset-bottom));
+.routes {
+  padding-top: calc(96px + env(safe-area-inset-top));
 }
 
 .nav-link.active {
-  @apply px-2 py-0 bg-white text-blue-700;
+  @apply bg-white dark:bg-blue-600 dark:bg-opacity-50 text-blue-700 dark:text-white;
+}
+
+.scrollarea .scrollbar-container.vertical {
+  top: calc(84px + env(safe-area-inset-top)) !important;
+}
+
+.inview-in {
+  animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.inview-out {
+  animation: slide-out-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-bottom {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.status-bar-style {
+  @supports (-webkit-touch-callout: none) {
+    position: absolute;
+    inset: 0;
+    bottom: auto;
+    height: 80px;
+    background: rgba(58, 62, 77, 0.5);
+    background: linear-gradient(180deg, rgba(58, 62, 77, 0.5) 0%, rgba(76,76,82,0) 50%);
+    @media (prefers-color-scheme: dark) {
+      display: none;
+    }
+  }
+}
+
+.profile-image {
+  &-light {
+    display: block;
+  }
+  &-dark {
+    display: none;
+  }
+  @media (prefers-color-scheme: dark) {
+    &-light {
+      display: none;
+    }
+    &-dark {
+      display: block;
+    }
+  }
 }

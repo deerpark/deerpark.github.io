@@ -1,24 +1,41 @@
-import { ReactComponent as TechIcon } from '../assets/icons/tech.svg'
+import { InView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { inviewVariants } from '../config'
 
-export default function Tech({ isScrolled }) {
+export default function Tech() {
   return (
-    <div>
-      <div
-        className={`flex flex-col py-10 transition-all ${
-          isScrolled ? 'opacity-0 -translate-y-5' : 'opacity-1 -translate-y-0'
-        }`}>
-        <h2 className='text-xl text-gray-800 dark:text-gray-200'>
-          <span className='font-title'>기술</span>
-        </h2>
-        <p className='text-xs text-gray-500'>:)</p>
+    <>
+      <div className='h-screen flex flex-col justify-center items-stretch'>
+        <InView>
+          {({ inView, ref, entry }) => (
+            <motion.div
+              ref={ref}
+              initial='hidden'
+              animate={inView ? 'visible' : 'hidden'}
+              variants={inviewVariants}
+              className='profile-image flex justify-center items-center pt-10 pb-16'>
+              <FontAwesomeIcon className='text-blue-600 dark:text-opacity-70' icon={['fat', 'laptop-code']} size='6x' />
+            </motion.div>
+          )}
+        </InView>
+        <InView>
+          {({ inView, ref, entry }) => (
+            <motion.div
+              ref={ref}
+              initial='hidden'
+              animate={inView ? 'visible' : 'hidden'}
+              variants={inviewVariants}
+              className='text-3xl pb-40 text-center'>
+              <h2 className='text-3xl text-gray-600 dark:text-gray-400'>
+                <span className='font-title'>기술</span>
+              </h2>
+              <p className='text-sm text-gray-500'>기술 스택</p>
+            </motion.div>
+          )}
+        </InView>
       </div>
-      <div className='flex justify-center items-center pb-10'>
-        <TechIcon className='w-52 h-52' />
-      </div>
       <div className='h-96' />
-      11
-      <div className='h-96' />
-      <div className='h-96' />
-    </div>
+    </>
   )
 }

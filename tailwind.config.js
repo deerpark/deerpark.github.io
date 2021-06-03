@@ -60,6 +60,7 @@ module.exports = {
       screens: {
         '2xs': '320px',
         xs: '480px',
+        base: '813px',
       },
     },
   },
@@ -71,6 +72,7 @@ module.exports = {
       ringWidth: ['hover'],
       ringOffsetWidth: ['hover'],
       transform: ['hover', 'focus'],
+      display: ['dark'],
     },
   },
   plugins: [],

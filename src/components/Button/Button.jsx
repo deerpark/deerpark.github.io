@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { Link, NavLink } from 'react-router-dom'
 
 const THEMES = {
   transparent:
@@ -14,9 +15,11 @@ const THEMES = {
 }
 
 function Button({
+  as = 'button',
+  to,
   children,
   className,
-  type = 'button',
+  type,
   theme = 'default',
   width = '',
   height = 'h-8',
@@ -30,11 +33,19 @@ function Button({
     rounded,
     className
   )
-  return (
-    <button type={type} className={classes}>
-      {children}
-    </button>
-  )
+  let As
+  switch (as) {
+    case 'a':
+      As = Link
+      break
+    case 'nav':
+      As = NavLink
+      break
+    default:
+      As = 'button'
+  }
+  const props = { type, to, className: classes }
+  return <As {...props}>{children}</As>
 }
 
 export default Button

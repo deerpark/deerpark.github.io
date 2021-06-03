@@ -4,6 +4,6 @@
   },
   "exclude": ["node_modules", "build"],
   "typeAcquisition": {
-    "exclude": ["dotenv"]
+    "exclude": ["dotenv", "harmony-reflect"]
   }
 }

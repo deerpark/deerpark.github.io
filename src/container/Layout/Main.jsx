@@ -1,7 +1,5 @@
 import { Switch, Route } from 'react-router-dom'
 import RSC from 'react-scrollbars-custom'
-import DynamicScrollToTop from '../App/DynamicScrollToTop'
-import useIntersectionChecker from '../../hooks/useIntersectionChecker'
 import Profile from '../../page/Profile'
 import Career from '../../page/Career'
 import Strength from '../../page/Strength'
@@ -28,7 +26,6 @@ function Content() {
           <Tech />
         </Route>
       </Switch>
-      <DynamicScrollToTop />
     </>
   )
 }
@@ -92,11 +89,12 @@ const thumbYProps = {
   },
 }
 
+/* const IDLE_MAX_Y = 312 */
+
 export default function Main() {
-  const onScroll = useIntersectionChecker()
   return (
     <RSC
-      onScroll={onScroll}
+      /* onScroll={onScroll} */
       className='flex-grow flex-shrink'
       wrapperProps={wrapperProps}
       trackYProps={trackYProps}

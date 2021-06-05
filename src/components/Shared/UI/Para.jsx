@@ -3,10 +3,10 @@ import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { inviewVariants } from '../../../config'
+import { fadeInVariants } from '../../../config'
 
 function Para(
-  { icon, iconSize = 'xl', title, desc, className = '', isLast = false, p = [], odd = false, divider = false },
+  { icon, iconSize = 'lg', title, desc, className = '', isLast = false, p = [], odd = false, divider = false },
   paraRef
 ) {
   const cx = classnames(
@@ -23,10 +23,10 @@ function Para(
             ref={ref}
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
-            variants={inviewVariants}
+            variants={fadeInVariants}
             className='flex items-center space-x-5 pb-5'>
-            <div className='w-12 h-12 flex justify-center items-center rounded-3xl bg-blue-600 dark:bg-opacity-50'>
-              <FontAwesomeIcon className='text-white dark:text-opacity-70' icon={icon} size={iconSize} />
+            <div className='w-12 h-12 flex justify-center items-center rounded-3xl bg-gray-200 dark:bg-gray-800 bg-opacity-50'>
+              <FontAwesomeIcon className='text-gray-500 dark:text-opacity-70' icon={icon} size={iconSize} />
             </div>
             <div className=''>
               {title && (
@@ -39,14 +39,14 @@ function Para(
           </motion.div>
         )}
       </InView>
-      {p.map(para => (
-        <InView>
+      {p.map((para, i) => (
+        <InView key={i.toString()}>
           {({ inView, ref }) => (
             <motion.div
               ref={ref}
               initial='hidden'
               animate={inView ? 'visible' : 'hidden'}
-              variants={inviewVariants}
+              variants={fadeInVariants}
               className='pb-5 pl-0 xs:pl-16 ml-1.5 leading-normal text-justify'>
               {para}
             </motion.div>

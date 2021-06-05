@@ -49,10 +49,8 @@ body {
 
 .header {
   padding-top: calc(env(safe-area-inset-top) * 0.8);
-  height: calc(88px + env(safe-area-inset-top) * 0.8);
   &--compact {
     padding-top: calc(env(safe-area-inset-top) * 0.8);
-    height: calc(60px + env(safe-area-inset-top) * 0.8);
   }
 }
 
@@ -98,7 +96,7 @@ body {
   }
 }
 
-.status-bar-style {
+/* .status-bar-style {
   @supports (-webkit-touch-callout: none) {
     position: absolute;
     inset: 0;
@@ -110,7 +108,7 @@ body {
       display: none;
     }
   }
-}
+} */
 
 .profile-image {
   &-light {

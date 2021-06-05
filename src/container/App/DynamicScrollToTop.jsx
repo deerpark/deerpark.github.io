@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 const DynamicScrollToTop = ({ history, location }) => {
   const pathname = useRef('/')
+  const scrollRoot = useRef(document.querySelector('.ScrollbarsCustom-Content'))
   useEffect(() => {
     // Keep default behavior of restoring scroll position when user:
     // - clicked back button
@@ -14,9 +15,9 @@ const DynamicScrollToTop = ({ history, location }) => {
     }
     // In all other cases, check fragment/scroll to top
     if (location.pathname !== pathname.current) {
-      const element = document.querySelector('.ScrollbarsCustom-Content')
-      if (element) {
-        element.scrollIntoView({ block: 'start', behavior: 'smooth' })
+      console.log(scrollRoot)
+      if (scrollRoot.current) {
+        scrollRoot.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
       }
       pathname.current = location.pathname
     }

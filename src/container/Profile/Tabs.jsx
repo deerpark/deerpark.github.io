@@ -5,9 +5,9 @@ import { Tabs } from '../../components/Shared/UI'
 import { profileTabState } from '../../states'
 
 const TABS = [
-  { label: '소개', value: '1' },
-  { label: '업무적 강점', value: '2' },
-  { label: '경력', value: '3' },
+  { label: '프로필', value: '1' },
+  { label: '경력', value: '2' },
+  { label: '업무적 강점', value: '3' },
   { label: '기술 스택', value: '4' },
 ]
 
@@ -16,13 +16,13 @@ export default function ProfileTab() {
   const [profileTab, setProfileTab] = useRecoilState(profileTabState)
   const tab = useRef(profileTab)
   const handleChangeTab = useCallback(v => {
-    if (profileTab !== tab) {
+    if (profileTab && profileTab !== tab) {
       if (scrollRootRef.current) {
         scrollRootRef.current.scrollTop = 502
       }
       tab.current = profileTab
     }
-    setProfileTab(v)
+    if (v) setProfileTab(v)
   }, [])
   useEffect(() => {
     scrollRootRef.current = document.querySelector('.ScrollbarsCustom-Scroller')

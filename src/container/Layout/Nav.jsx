@@ -22,42 +22,42 @@ export default function Nav() {
         <div className='flex-1 flex-grow flex justify-center items-stretch p-2'>
           <Button
             as='nav'
-            to='/career'
+            to='/ux'
             activeClassName='active'
             className='nav-link flex-col space-y-1.5 px-6'
             theme='menu'
             width='w-full'
             height='h-full'
             rounded='rounded'>
-            <FontAwesomeIcon icon={['fas', 'buildings']} />
-            <span className='text-2xs whitespace-nowrap'>경력</span>
+            <FontAwesomeIcon icon={['fas', 'head-side']} />
+            <span className='text-2xs whitespace-nowrap'>UX</span>
           </Button>
         </div>
         <div className='flex-1 flex-grow flex justify-center items-stretch p-2'>
           <Button
             as='nav'
-            to='/strength'
+            to='/dev'
             className='nav-link flex-col space-y-1.5 px-6'
             theme='menu'
             width='w-full'
             height='h-full'
             rounded='rounded'>
-            <FontAwesomeIcon icon={['fas', 'battery-bolt']} />
-            <span className='text-2xs whitespace-nowrap'>강점</span>
+            <FontAwesomeIcon icon={['fas', 'laptop-code']} />
+            <span className='text-2xs whitespace-nowrap'>개발</span>
           </Button>
         </div>
         <div className='flex-1 flex-grow flex justify-center items-stretch p-2'>
           <Button
             as='nav'
-            to='/tech'
+            to='/design'
             activeClassName='active'
             className='nav-link flex-col space-y-1.5 px-6'
             theme='menu'
             width='w-full'
             height='h-full'
             rounded='rounded sm:rounded-br-2xl sm:hover:rounded-br-2xl sm:focus:rounded-br-2xl'>
-            <FontAwesomeIcon icon={['fas', 'laptop-code']} />
-            <span className='text-2xs whitespace-nowrap'>기술</span>
+            <FontAwesomeIcon icon={['fas', 'swatchbook']} />
+            <span className='text-2xs whitespace-nowrap'>디자인</span>
           </Button>
         </div>
       </menu>

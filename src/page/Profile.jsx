@@ -1,6 +1,9 @@
 import { useRecoilState, useRecoilValue } from 'recoil'
-import About from '../container/Profile/About'
 import Cover from '../components/Shared/Cover'
+import About from '../container/Profile/About'
+import Strength from '../container/Profile/Strength'
+import Career from '../container/Profile/Career'
+import Tech from '../container/Profile/Tech'
 import { profileTabState, profileTabStickyState } from '../states'
 
 export default function Profile() {
@@ -23,9 +26,9 @@ export default function Profile() {
       />
       <div className='min-h-screen'>
         {profileTab === '1' && <About />}
-        {profileTab === '2' && <div className='h-96' />}
-        {profileTab === '3' && <div className='h-96' />}
-        {profileTab === '4' && <div className='h-96' />}
+        {profileTab === '2' && <Career />}
+        {profileTab === '3' && <Strength />}
+        {profileTab === '4' && <Tech />}
       </div>
     </>
   )

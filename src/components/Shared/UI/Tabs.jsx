@@ -98,14 +98,16 @@ const Tabs = forwardRef(
             onClick={handleClickOption(option)}
             className={`tab relative z-10 flex items-center max-w-max ${sizes[size].height} ${
               option.disabled ? 'opacity-50 cursor-default' : 'cursor-pointer'
-            } px-2 rounded truncate ${isSelected ? 'font-bold' : ''} transition-all duration-300 ease-in-out ${
+            } px-2 rounded truncate font-bold transform ${
+              isSelected ? '' : 'hover:scale-105'
+            } transition-all duration-300 ease-in-out ${
               isSelected
                 ? invert
                   ? 'text-blue-600 dark:text-blue-600'
                   : 'text-white dark:text-gray-800'
                 : invert
-                ? 'text-blue-100 dark:text-blue-100'
-                : 'text-blue-900 dark:text-blue-400 text-opacity-30'
+                ? 'text-blue-100 dark:text-blue-100 hover:text-blue-600'
+                : 'text-blue-900 dark:text-blue-400 text-opacity-40 hover:text-opacity-60'
             }`}>
             {option.label}
           </a>

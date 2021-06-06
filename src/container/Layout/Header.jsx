@@ -2,18 +2,17 @@ import { useRef, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import { AnimatePresence } from 'framer-motion'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { titleStickyState, profileTabStickyState } from '../../states'
 import Button from '../../components/Shared/UI/Button'
 import ProfileTabs from '../Profile/Tabs'
-import { ReactComponent as HomeIcon } from '../../assets/icons/home.svg'
-import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 
 const TITLE = {
-  '/': 'Welcome',
+  '/': '홈',
   '/profile': '김용만',
-  '/career': '경력',
-  '/strength': '강점',
-  '/tech': '기술',
+  '/ux': 'UX',
+  '/dev': '개발',
+  '/design': '디자인',
 }
 
 function Header({ history, location }) {
@@ -46,9 +45,9 @@ function Header({ history, location }) {
       <div className='w-full relative z-20 flex flex-col'>
         <div className='w-full flex items-center p-7'>
           <div className='w-24 flex space-x-4 items-center'>
-            <Button as='nav' to='/'>
-              <HomeIcon />
-            </Button>
+            {/* <Button as='nav' to='/'>
+              <FontAwesomeIcon icon={['fas', 'bars']} />
+            </Button> */}
           </div>
           <h2
             className={`flex-grow text-center text-xl text-gray-700 dark:text-gray-300 transition-all transform ${
@@ -58,7 +57,7 @@ function Header({ history, location }) {
           </h2>
           <div className='w-24 flex-none flex space-x-4 justify-end items-center'>
             <Button>
-              <SettingsIcon />
+              <FontAwesomeIcon icon={['fas', 'wand-magic-sparkles']} />
             </Button>
           </div>
         </div>

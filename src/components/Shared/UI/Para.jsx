@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fadeInVariants } from '../../../config'
 
 function Para(
-  { icon, iconSize = 'lg', title, desc, className = '', isLast = false, p = [], odd = false, divider = false },
+  { icon, iconSize = 'lg', image, title, desc, className = '', isLast = false, p = [], odd = false, divider = false },
   paraRef
 ) {
   const cx = classnames(
@@ -25,8 +25,12 @@ function Para(
             animate={inView ? 'visible' : 'hidden'}
             variants={fadeInVariants}
             className='flex items-center space-x-5 pb-5'>
-            <div className='w-12 h-12 flex justify-center items-center rounded-3xl bg-gray-200 dark:bg-gray-800 bg-opacity-50'>
-              <FontAwesomeIcon className='text-gray-500 dark:text-opacity-70' icon={icon} size={iconSize} />
+            <div className='w-12 h-12 flex justify-center items-center rounded-3xl overflow-hidden bg-gray-200 dark:bg-gray-800 bg-opacity-50'>
+              {image ? (
+                <img src={image} alt='' />
+              ) : (
+                <FontAwesomeIcon className='text-gray-500 dark:text-opacity-70' icon={icon} size={iconSize} />
+              )}
             </div>
             <div className=''>
               {title && (
@@ -39,7 +43,7 @@ function Para(
           </motion.div>
         )}
       </InView>
-      {p.map((para, i) => (
+      {p?.map((para, i) => (
         <InView key={i.toString()}>
           {({ inView, ref }) => (
             <motion.div

@@ -1,33 +1,49 @@
+import { InView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Para } from '../../components/Shared/UI'
+import { slideInXVariants } from '../../config'
 
 export default function About() {
   return (
     <>
+      <InView>
+        {({ inView, ref }) => (
+          <motion.div
+            ref={ref}
+            initial='hidden'
+            animate={inView ? 'visible' : 'hidden'}
+            variants={slideInXVariants}
+            className='profile-image flex justify-center items-center pt-10 pb-16'>
+            <FontAwesomeIcon
+              className='text-blue-600 dark:text-opacity-70'
+              icon={['fat', 'image-polaroid-user']}
+              size='6x'
+            />
+          </motion.div>
+        )}
+      </InView>
       <Para
-        title='소개'
-        desc='소개의 말'
-        icon={['fat', 'person']}
-        p={[
-          '디자인을 잘 아는 개발자! UX를 잘 아는 개발자! 개발을 잘 하는 개발자!',
-          '한 가지에 매료되면 강한 집중력을 발휘합니다. 오히려 과한 열정일 수도 있습니다. 현재는 넘치는 열정도 스스로 컨트롤할 줄 아는 김용만이라고 합니다.',
-        ]}
+        title='김용만'
+        desc='기본 정보'
+        icon={['fat', 'user-tie']}
+        p={['경력 : 13년 11개월', '생년월 : 1982.10', '사는곳 : 서울시 영등포구']}
       />
       <Para
         odd
-        title='성장 과정'
-        icon={['fat', 'baby-carriage']}
+        title='소개'
+        desc='소개의 말'
+        icon={['fat', 'scroll']}
         p={[
-          '22살 디자이너 ~ 28살 마크업 개발을 시작으로 시간이 지남에 따라 점점 기술력에 대한 갈망이 깊어지면서 프론트엔드 개발 쪽으로 관심을 가지게 되었으며, 현재 수많은 프레임워크와 라이브러리에 대해 시간을 투자하며 공부에 공부를 하고있습니다.',
+          '디자인을 잘 아는 개발자! UX를 잘 아는 개발자! 개발을 잘 하는 개발자!',
+          '한 분야만 잘 하는 개발자보다 두루두루 잘 하는 개발자가 되려고 합니다.',
         ]}
       />
       <Para
-        title='경력'
-        icon={['fat', 'briefcase-clock']}
+        title='성장 과정'
+        icon={['fat', 'seedling']}
         p={[
-          '그동안은 svg, motion script 라이브러리인 GSAP로 다양한 motion 인터렉티브 개발 경험을 쌓아왔고, NextJS 프레임워크로 SSR 및 SPA 등 프론트엔드 개발에 집중했습니다.',
-          '또한 AngularJS를 시작으로 Angular, React 기반의 라이브러리와 프레임워크를 이용하여 실무 경력을 쌓아왔으며 캔버스와 WebGL도 두루 살펴 보고 있습니다.',
-          '추가로 ES6,7,8에 지속적인 관심을 갖고 있고, NodeJS를 이용한 개발환경에 대한 여러가지 고민도 함께 하며 RESTful API로 현업 개발을 하고 있습니다.',
-          '또한 단위테스트에 대한 관심도 많이 가지고 있으며 TDD 개발에 관심이 있습니다.',
+          'UI 디자이너로 시작 후 마크업 개발, 인터렉티브 개발을 거쳐 현재 프론트엔드 개발까지 점점 기술력에 대한 갈망이 깊어지면서 다양한 쪽으로 관심을 가지고 있습니다.',
         ]}
       />
       <Para
@@ -35,10 +51,12 @@ export default function About() {
         title='역량'
         icon={['fat', 'battery-bolt']}
         p={[
-          'GIT, Docker, Prettier, Agile를 통한 오랜 협업 경험을 가지고 있습니다.',
-          '동료와의 원활한 커뮤니케이션을 아주 중요하게 생각하며 오로지 개발이 아닌 비즈니스 모델과 개발은 하나라고 생각하고 있습니다.',
-          '접근성 및 SEO는 기본이라고 생각하고 있고, 더 나아가 디자인과 개발이 따로 떨어져 생각하는 게 아닌 함께 고려해야 한다는 철학을 가지고 있습니다.',
-          '결국 사용자 경험을 최대한 끌어올릴수 있는 방안도 함께 연구해야 한다고 생각합니다.',
+          'RESTful API + ES6 이상 버전의 JavaScript로 오랜 개발 경험',
+          'NodeJS 환경에서 React 기반 CRA, NextJS 프레임워크로 SSR, CSR 프론트엔드 개발 경험',
+          'AWS, GCP 클라우드 환경에서 프론트엔드 개발 경험',
+          '다양한 Motion 인터렉티브 개발 경험',
+          '디자인 시스템 및 접근성, SEO를 고려한 개발 경험',
+          'GIT, Docker, ESlint, Prettier, Agile을 통한 오랜 협업 경험',
         ]}
       />
       <Para
@@ -46,8 +64,7 @@ export default function About() {
         icon={['fat', 'file-dashed-line']}
         p={[
           '프론트엔드의 모든 것..',
-          '디자인+마크업+MSA+RESTful API를 충분히 숙지한 저야말로 더 나은 UX를 창출할 수 있다고 믿고 있으며, 이는 결론적으로 귀사에 기존 및 새로운 상품에 대한 수익 증진 효과를 가져오게 될 거라는 걸 확신하고 있습니다.',
-          '긴 글 읽어 주셔서 깊은 감사 드리며 꼭 귀사와 함께 하고 싶다는 말씀 전달 드립니다. 이상입니다.',
+          '디자인과 프론트엔드 개발을 충분히 숙지한 저야 말로 남들보다는 더 나은 UX를 창출할 수 있다고 확신합니다.',
         ]}
         isLast
       />

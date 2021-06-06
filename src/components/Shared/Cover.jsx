@@ -10,8 +10,6 @@ export default function Cover({ icon, title, subTitle, dense, setStickyAnyState 
   const containerHeight = useRecoilValue(containerHeightState)
   const handleStickyTitle = useCallback(inview => {
     setTitleSticky(!inview)
-  }, [])
-  const handleStickyAny = useCallback(inview => {
     setStickyAnyState(inview)
   }, [])
   return (
@@ -32,7 +30,7 @@ export default function Cover({ icon, title, subTitle, dense, setStickyAnyState 
           )}
         </InView>
       )}
-      <InView threshold={0.4} onChange={setStickyAnyState && handleStickyAny}>
+      <InView>
         {({ inView, ref }) => (
           <motion.div
             ref={ref}

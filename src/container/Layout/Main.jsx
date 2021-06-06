@@ -1,9 +1,9 @@
 import { Switch, Route } from 'react-router-dom'
 import RSC from 'react-scrollbars-custom'
 import Profile from '../../page/Profile'
-import Career from '../../page/Career'
-import Strength from '../../page/Strength'
-import Tech from '../../page/Tech'
+import UX from '../../page/UX'
+import Dev from '../../page/Dev'
+import Design from '../../page/Design'
 import Welcome from '../../page/Welcome'
 
 function Content() {
@@ -16,14 +16,14 @@ function Content() {
         <Route exact path='/profile'>
           <Profile />
         </Route>
-        <Route exact path='/career'>
-          <Career />
+        <Route exact path='/ux'>
+          <UX />
         </Route>
-        <Route exact path='/strength'>
-          <Strength />
+        <Route exact path='/dev'>
+          <Dev />
         </Route>
-        <Route exact path='/tech'>
-          <Tech />
+        <Route exact path='/design'>
+          <Design />
         </Route>
       </Switch>
     </>

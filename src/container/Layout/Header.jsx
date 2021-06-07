@@ -45,9 +45,9 @@ function Header({ history, location }) {
       <div className='w-full relative z-20 flex flex-col'>
         <div className='w-full flex items-center p-7'>
           <div className='w-24 flex space-x-4 items-center'>
-            {/* <Button as='nav' to='/'>
-              <FontAwesomeIcon icon={['fas', 'bars']} />
-            </Button> */}
+            <Button as='nav' to='/'>
+              <FontAwesomeIcon icon={['fas', 'house-user']} />
+            </Button>
           </div>
           <h2
             className={`flex-grow text-center text-xl text-gray-700 dark:text-gray-300 transition-all transform ${

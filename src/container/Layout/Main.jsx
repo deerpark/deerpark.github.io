@@ -1,10 +1,13 @@
+import { useMemo } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
 import RSC from 'react-scrollbars-custom'
 import Profile from '../../page/Profile'
 import UX from '../../page/UX'
 import Dev from '../../page/Dev'
 import Design from '../../page/Design'
 import Welcome from '../../page/Welcome'
+import { profileTabStickyState } from '../../states'
 
 function Content() {
   return (
@@ -48,29 +51,6 @@ const wrapperProps = {
   },
 }
 
-const trackYProps = {
-  renderer: props => {
-    const { elementRef, ...restProps } = props
-    return (
-      <div
-        {...restProps}
-        ref={elementRef}
-        className='trackY bg-transparent flex justify-center'
-        style={{
-          top: 'calc(92px + env(safe-area-inset-top) * 0.8)',
-          height: 'calc(100% - 96px - env(safe-area-inset-top) * 0.8)',
-          position: 'absolute',
-          overflow: 'hidden',
-          borderRadius: 4,
-          userSelect: 'none',
-          width: 10,
-          right: 0,
-        }}
-      />
-    )
-  },
-}
-
 const thumbYProps = {
   renderer: props => {
     const { elementRef, ...restProps } = props
@@ -89,9 +69,34 @@ const thumbYProps = {
   },
 }
 
-/* const IDLE_MAX_Y = 312 */
-
 export default function Main() {
+  const profileTabSticky = useRecoilValue(profileTabStickyState)
+  const trackYProps = useMemo(
+    () => ({
+      renderer: props => {
+        const { elementRef, ...restProps } = props
+        return (
+          <div
+            {...restProps}
+            ref={elementRef}
+            className='trackY bg-transparent flex justify-center'
+            style={{
+              top: `calc(${profileTabSticky ? 136 : 92}px + env(safe-area-inset-top) * 0.8)`,
+              height: `calc(100% - ${profileTabSticky ? 140 : 96}px - env(safe-area-inset-top) * 0.8)`,
+              position: 'absolute',
+              overflow: 'hidden',
+              borderRadius: 4,
+              userSelect: 'none',
+              width: 10,
+              right: 0,
+            }}
+          />
+        )
+      },
+    }),
+    [profileTabSticky]
+  )
+
   return (
     <RSC
       /* onScroll={onScroll} */

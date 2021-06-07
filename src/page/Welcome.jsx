@@ -1,9 +1,19 @@
-import Empty from '../components/Shared/UI/Empty'
+import Cover from '../components/Shared/Cover'
 
 export default function Welcome() {
   return (
-    <div className='min-h-screen flex justify-center items-center'>
-      <Empty msg='업데이트 예정' icon={['fat', 'traffic-cone']} />
-    </div>
+    <>
+      <Cover
+        dense
+        title='김용만'
+        subTitle='프론트엔드 엔지니어'
+        icon={
+          <>
+            <img className='profile-image-dark' src='/profile-image-dark.png' alt='' width='205' />
+            <img className='profile-image-light' src='/profile-image.png' alt='' width='205' />
+          </>
+        }
+      />
+    </>
   )
 }

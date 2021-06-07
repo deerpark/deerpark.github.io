@@ -65,8 +65,10 @@ const Tabs = forwardRef(
       [disabled, selected]
     )
     const handleIdicator = useCallback(el => {
-      setTranslateX(el.offsetLeft)
-      setWidth(el.clientWidth)
+      if (el) {
+        setTranslateX(el.offsetLeft)
+        setWidth(el.clientWidth)
+      }
     }, [])
 
     const handleClickOption = useCallback(
@@ -82,11 +84,16 @@ const Tabs = forwardRef(
       []
     )
 
-    useEffect(() => {
-      const selectedTab = items.find(o => o.value === value) || items[0]
-      setSelected(selectedTab)
+    const init = useCallback(() => {
       const el = indicator?.current
-      if (el) el.parentNode.childNodes[items.indexOf(selectedTab)].click()
+      if (el) {
+        handleIdicator(el.parentNode.childNodes[items.indexOf(items.find(item => item.value === selected.value))])
+      }
+    }, [selected])
+
+    useEffect(() => {
+      init()
+      window.addEventListener('resize', init)
     }, [value])
 
     const renderTab = useCallback(

@@ -5,44 +5,96 @@ import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fadeInVariants } from '../../../config'
 
+function ParaContent({ image, title, desc, icon, iconSize, iconClassName, compact, reverse, titleBorderBottom }) {
+  return (
+    <div className='flex items-center space-x-5'>
+      <div
+        className={`w-12 h-12 flex-none flex justify-center items-center rounded-3xl overflow-hidden ${
+          iconClassName || ''
+        }`}>
+        {image ? <img src={image} alt='' /> : <FontAwesomeIcon icon={icon} size={iconSize} />}
+      </div>
+      <div className='flex-grow flex flex-col items-stretch'>
+        {title && (
+          <h2
+            className={`${compact ? 'text-base' : 'text-xl'} ${
+              compact && titleBorderBottom
+                ? 'pb-5 border-b border-gray-200 border-opacity-50 dark:border-opacity-5'
+                : ''
+            } ${reverse ? 'order-2' : 'order-1'} text-gray-600 dark:text-gray-400`}>
+            <span className='font-title'>{title}</span>
+          </h2>
+        )}
+        {desc && <p className={`${reverse ? 'order-1' : 'order-2'} text-xs text-gray-500`}>{desc}</p>}
+      </div>
+    </div>
+  )
+}
+
 function Para(
-  { icon, iconSize = 'lg', image, title, desc, className = '', isLast = false, p = [], odd = false, divider = false },
+  {
+    icon,
+    iconSize = 'lg',
+    iconClassName = 'text-gray-500 dark:text-opacity-70 bg-gray-200 dark:bg-gray-800 bg-opacity-50',
+    image,
+    compact,
+    title,
+    reverse,
+    desc,
+    className = '',
+    titleBorderBottom,
+    isLast = false,
+    p = [],
+    odd = false,
+    divider = false,
+    animate = true,
+  },
   paraRef
 ) {
   const cx = classnames(
-    'px-7 pt-10',
+    !compact && 'px-7 pt-10',
     className,
     odd && 'bg-gray-50 dark:bg-gray-700 dark:bg-opacity-10',
     !isLast && divider && 'border-b border-gray-100 dark:border-opacity-10'
   )
   return (
     <div className={cx} ref={paraRef}>
-      <InView>
-        {({ inView, ref }) => (
-          <motion.div
-            ref={ref}
-            initial='hidden'
-            animate={inView ? 'visible' : 'hidden'}
-            variants={fadeInVariants}
-            className='flex items-center space-x-5 pb-5'>
-            <div className='w-12 h-12 flex justify-center items-center rounded-3xl overflow-hidden bg-gray-200 dark:bg-gray-800 bg-opacity-50'>
-              {image ? (
-                <img src={image} alt='' />
-              ) : (
-                <FontAwesomeIcon className='text-gray-500 dark:text-opacity-70' icon={icon} size={iconSize} />
-              )}
-            </div>
-            <div className=''>
-              {title && (
-                <h2 className='text-xl text-gray-600 dark:text-gray-400'>
-                  <span className='font-title'>{title}</span>
-                </h2>
-              )}
-              {desc && <p className='text-xs text-gray-500'>{desc}</p>}
-            </div>
-          </motion.div>
-        )}
-      </InView>
+      {animate ? (
+        <InView>
+          {({ inView, ref }) => (
+            <motion.div
+              ref={ref}
+              initial='hidden'
+              animate={inView ? 'visible' : 'hidden'}
+              variants={fadeInVariants}
+              className='flex items-center space-x-5 pb-5'>
+              <ParaContent
+                image={image}
+                title={title}
+                desc={desc}
+                icon={icon}
+                compact={compact}
+                titleBorderBottom={titleBorderBottom}
+                reverse={reverse}
+                iconSize={iconSize}
+                iconClassName={iconClassName}
+              />
+            </motion.div>
+          )}
+        </InView>
+      ) : (
+        <ParaContent
+          image={image}
+          title={title}
+          desc={desc}
+          icon={icon}
+          compact={compact}
+          titleBorderBottom={titleBorderBottom}
+          reverse={reverse}
+          iconSize={iconSize}
+          iconClassName={iconClassName}
+        />
+      )}
       {p?.map((para, i) => (
         <InView key={i.toString()}>
           {({ inView, ref }) => (
@@ -57,7 +109,7 @@ function Para(
           )}
         </InView>
       ))}
-      {isLast ? <div className='mt-5 h-20' /> : <div className='mt-5 pb-10' />}
+      {isLast ? <div className='mt-5 h-20' /> : <div className={compact ? 'hidden' : 'mt-5 pb-10'} />}
     </div>
   )
 }

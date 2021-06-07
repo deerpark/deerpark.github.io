@@ -18,7 +18,7 @@ export default function ProfileTab() {
   const handleChangeTab = useCallback(v => {
     if (profileTab && profileTab !== tab) {
       if (scrollRootRef.current) {
-        scrollRootRef.current.scrollTop = 502
+        scrollRootRef.current.scrollTo({ top: 0, behavior: 'smooth' })
       }
       tab.current = profileTab
     }

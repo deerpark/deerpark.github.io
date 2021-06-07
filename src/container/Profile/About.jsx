@@ -1,8 +1,7 @@
 import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Para } from '../../components/Shared/UI'
-import { slideInXVariants } from '../../config'
+import { fadeInVariants } from '../../config'
 
 export default function About() {
   return (
@@ -13,22 +12,60 @@ export default function About() {
             ref={ref}
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXVariants}
-            className='profile-image flex justify-center items-center pt-10 pb-16'>
-            <FontAwesomeIcon
-              className='text-blue-600 dark:text-opacity-70'
-              icon={['fat', 'image-polaroid-user']}
-              size='6x'
-            />
+            variants={fadeInVariants}
+            className='flex items-center mb-10 h-40 bg-gray-400 text-gray-400 mx-7 rounded-3xl'>
+            ^^
           </motion.div>
         )}
       </InView>
-      <Para
-        title='김용만'
-        desc='기본 정보'
-        icon={['fat', 'user-tie']}
-        p={['경력 : 13년 11개월', '생년월 : 1982.10', '사는곳 : 서울시 영등포구']}
-      />
+      <InView>
+        {({ inView, ref }) => (
+          <motion.div
+            ref={ref}
+            initial='hidden'
+            animate={inView ? 'visible' : 'hidden'}
+            variants={fadeInVariants}
+            className='mb-10 bg-gray-100 dark:bg-gray-800 bg-opacity-25 mx-7 py-5 pl-5 rounded-3xl'>
+            <ul className='space-y-5'>
+              <li>
+                <Para
+                  title='13년 11개월'
+                  desc='경력'
+                  icon={['fad', 'briefcase-clock']}
+                  iconClassName='bg-opacity-100'
+                  compact
+                  titleBorderBottom
+                  reverse
+                  animate={false}
+                />
+              </li>
+              <li>
+                <Para
+                  title='1982.10'
+                  desc='생년월'
+                  icon={['fad', 'cake-candles']}
+                  iconClassName='bg-opacity-100'
+                  compact
+                  titleBorderBottom
+                  reverse
+                  animate={false}
+                />
+              </li>
+              <li>
+                <Para
+                  title='서울시 영등포구'
+                  desc='사는곳'
+                  icon={['fad', 'location-dot']}
+                  iconClassName='bg-opacity-100'
+                  compact
+                  reverse
+                  animate={false}
+                />
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </InView>
       <Para
         odd
         title='소개'

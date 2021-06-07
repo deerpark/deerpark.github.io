@@ -16,7 +16,7 @@ export default function Nav() {
             height='h-full'
             rounded='rounded sm:rounded-bl-2xl sm:hover:rounded-bl-2xl sm:focus:rounded-bl-2xl'>
             <FontAwesomeIcon icon={['fas', 'image-polaroid-user']} />
-            <span className='text-2xs whitespace-nowrap'>김용만</span>
+            <span className='text-2xs whitespace-nowrap'>프로필</span>
           </Button>
         </div>
         <div className='flex-1 flex-grow flex justify-center items-stretch p-2'>

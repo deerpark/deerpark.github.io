@@ -5,7 +5,7 @@ import { Tabs } from '../../components/Shared/UI'
 import { profileTabState } from '../../states'
 
 const TABS = [
-  { label: '프로필', value: '1' },
+  { label: '소개', value: '1' },
   { label: '경력', value: '2' },
   { label: '업무적 강점', value: '3' },
   { label: '기술 스택', value: '4' },

@@ -9,7 +9,7 @@ import ProfileTabs from '../Profile/Tabs'
 
 const TITLE = {
   '/': '홈',
-  '/profile': '김용만',
+  '/profile': '프로필',
   '/ux': 'UX',
   '/dev': '개발',
   '/design': '디자인',

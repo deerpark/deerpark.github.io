@@ -6,14 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { titleStickyState, profileTabStickyState } from '../../states'
 import Button from '../../components/Shared/UI/Button'
 import ProfileTabs from '../Profile/Tabs'
-
-const TITLE = {
-  '/': '홈',
-  '/profile': '프로필',
-  '/ux': 'UX',
-  '/dev': '개발',
-  '/design': '디자인',
-}
+import { routes } from '../../config'
 
 function Header({ history, location }) {
   const { pathname } = location
@@ -53,7 +46,7 @@ function Header({ history, location }) {
             className={`flex-grow text-center text-xl text-gray-700 dark:text-gray-300 transition-all transform ${
               titleSticky ? 'opacity-1 translate-y-0' : 'opacity-0 translate-y-3'
             }`}>
-            <span className='font-title'>{TITLE[pathname]}</span>
+            <span className='font-title'>{routes[pathname]?.title}</span>
           </h2>
           <div className='w-24 flex-none flex space-x-4 justify-end items-center'>
             <Button>

@@ -38,13 +38,12 @@ const Tabs = forwardRef(
   (
     {
       className = '',
-      value = '',
+      value,
       items,
       align = 'left',
       inline = true,
       disabled,
       onChange,
-      children,
       invert = false,
       size = 'default',
       style = {},
@@ -62,7 +61,7 @@ const Tabs = forwardRef(
           onChange(selectedValue.value)
         }
       },
-      [disabled, selected]
+      [disabled, selected, value]
     )
     const handleIdicator = useCallback(el => {
       if (el) {
@@ -93,8 +92,15 @@ const Tabs = forwardRef(
 
     useEffect(() => {
       init()
-      window.addEventListener('resize', init)
+    }, [selected])
+
+    useEffect(() => {
+      setSelected({ value })
     }, [value])
+
+    useEffect(() => {
+      window.addEventListener('resize', init)
+    }, [])
 
     const renderTab = useCallback(
       option => {

@@ -43,3 +43,45 @@ export const fadeInVariants = {
     opacity: 0,
   },
 }
+
+export const profileTabVariants = {
+  enter: ([direction, containerWidth]) => ({
+    x: direction > 0 ? containerWidth : -containerWidth,
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: ([direction, containerWidth]) => ({
+    zIndex: 0,
+    x: direction < 0 ? containerWidth : -containerWidth,
+    opacity: 0,
+  }),
+}
+
+export const routes = {
+  '/': {
+    title: '홈',
+  },
+  '/profile': {
+    title: '프로필',
+  },
+  '/ux': {
+    title: 'UX',
+  },
+  '/dev': {
+    title: '개발',
+  },
+  '/design': {
+    title: '디자인',
+  },
+}
+
+export const profileTabs = [
+  { label: '소개', value: 0 },
+  { label: '경력', value: 1 },
+  { label: '업무적 강점', value: 2 },
+  { label: '기술 스택', value: 3 },
+]

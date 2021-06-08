@@ -60,9 +60,7 @@ const thumbYProps = {
         ref={elementRef}
         className='tHuMbY bg-black dark:bg-white bg-opacity-10'
         style={{
-          cursor: 'pointer',
-          borderRadius: 4,
-          width: 5,
+          display: 'none',
         }}
       />
     )
@@ -81,14 +79,7 @@ export default function Main() {
             ref={elementRef}
             className='trackY bg-transparent flex justify-center'
             style={{
-              top: `calc(${profileTabSticky ? 136 : 92}px + env(safe-area-inset-top) * 0.8)`,
-              height: `calc(100% - ${profileTabSticky ? 140 : 96}px - env(safe-area-inset-top) * 0.8)`,
-              position: 'absolute',
-              overflow: 'hidden',
-              borderRadius: 4,
-              userSelect: 'none',
-              width: 10,
-              right: 0,
+              display: 'none',
             }}
           />
         )

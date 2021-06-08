@@ -1,5 +1,10 @@
 import { atom } from 'recoil'
 
+export const containerWidthState = atom({
+  key: 'containerWidthState',
+  default: 0,
+})
+
 export const containerHeightState = atom({
   key: 'containerHeightState',
   default: 0,
@@ -17,5 +22,10 @@ export const profileTabStickyState = atom({
 
 export const profileTabState = atom({
   key: 'profileTabState',
-  default: '1',
+  default: 0,
+})
+
+export const profileTabDirectionState = atom({
+  key: 'profileTabDirectionState',
+  default: 0,
 })

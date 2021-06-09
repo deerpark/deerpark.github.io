@@ -61,6 +61,21 @@ export const profileTabVariants = {
   }),
 }
 
+export const careerPopupVariants = {
+  enter: () => ({
+    y: 0,
+    opacity: 0,
+  }),
+  center: {
+    y: -400,
+    opacity: 1,
+  },
+  exit: () => ({
+    y: 0,
+    opacity: 0,
+  }),
+}
+
 export const routes = {
   '/': {
     title: '홈',
@@ -84,4 +99,55 @@ export const profileTabs = [
   { label: '경력', value: 1 },
   { label: '업무적 강점', value: 2 },
   { label: '기술 스택', value: 3 },
+]
+
+export const careers = [
+  {
+    color: '#CADC2A',
+    logo: 'https://logo.clearbit.com/gsshop.com',
+    company: 'GS SHOP',
+    position: '프론트엔드 개발',
+    start: '2018',
+    working: true,
+  },
+  {
+    color: '#EB1C22',
+    logo: 'https://logo.clearbit.com/lezhin.jp',
+    company: '레진엔터테인먼트',
+    position: '프론트엔드 개발',
+    start: '2017',
+    working: false,
+  },
+  {
+    color: '#ffffff',
+    logo: 'https://logo.clearbit.com/neowizglobal.com',
+    company: '네오위즈게임즈',
+    position: '인터렉티브 개발',
+    start: '2011',
+    working: false,
+  },
+  {
+    color: '#F0F5F9',
+    logo: 'https://www.hanbiton.com/footer/images/logo_hanbiton2.png',
+    company: '한빛소프트',
+    position: 'UI 개발',
+    start: '2010',
+    working: false,
+  },
+  {
+    color: '#ffffff',
+    logo: 'http://www.intermajor.com/images/txt/footer_2.png',
+    company: '인터메이저',
+    position: '마크업 개발',
+    start: '2008',
+    working: false,
+  },
+  {
+    color: '#1A293D',
+    logo: 'http://miraepower.co.kr/layout/images/contents/f_logo.png',
+    company: '미래파워',
+    position: '디자인',
+    start: '2003',
+    working: false,
+  },
 ]

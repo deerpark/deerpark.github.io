@@ -23,6 +23,7 @@ function Button({
   width = '',
   height = 'h-8',
   rounded = 'rounded',
+  onClick,
 }) {
   const classes = classNames(
     'inline-flex justify-center items-center font-extrabold text-xl leading-none transition-all hover:ring-opacity-80',
@@ -43,7 +44,7 @@ function Button({
     default:
       As = 'button'
   }
-  const props = { type, to, className: classes }
+  const props = { type, to, className: classes, onClick }
   return <As {...props}>{children}</As>
 }
 

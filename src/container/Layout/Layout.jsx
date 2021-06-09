@@ -21,7 +21,7 @@ export default function Layout({ children }) {
       <div className='fixed z-0 bg-white dark:bg-black inset-0 bottom-1/2 base:hidden' />
       <Card
         ref={ref}
-        className='card w-full h-full relative base:min-w-sm base:max-w-sm base:max-h-md flex flex-col items-stretch gap-0'
+        className='card w-full h-full relative base:min-w-sm base:max-w-sm base:max-h-md flex flex-col items-stretch gap-0 overflow-hidden'
         p='p-0'>
         {children}
       </Card>

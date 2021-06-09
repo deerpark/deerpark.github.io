@@ -49,10 +49,11 @@ export default function About() {
             <ul className='space-y-5'>
               <li>
                 <Para
-                  title='13년 11개월'
+                  title='13년 +'
                   desc='경력'
-                  icon={['fad', 'briefcase-clock']}
+                  icon={['fad', 'user-clock']}
                   iconClassName='bg-opacity-100 mb-3 opacity-60'
+                  iconSize='2x'
                   compact
                   titleBorderBottom
                   reverse
@@ -65,6 +66,7 @@ export default function About() {
                   desc='생년월'
                   icon={['fad', 'cake-candles']}
                   iconClassName='bg-opacity-100 mb-3 opacity-60'
+                  iconSize='2x'
                   compact
                   titleBorderBottom
                   reverse
@@ -75,8 +77,9 @@ export default function About() {
                 <Para
                   title='서울시 영등포구'
                   desc='사는곳'
-                  icon={['fad', 'location-dot']}
+                  icon={['fad', 'map-location-dot']}
                   iconClassName='bg-opacity-100 mb-3 opacity-60'
+                  iconSize='2x'
                   compact
                   reverse
                   animate={false}

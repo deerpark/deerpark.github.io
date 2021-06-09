@@ -134,3 +134,13 @@ body {
 .ScrollbarsCustom-Content {
   margin-top: env(safe-area-inset-top);
 }
+
+.career {
+  &-button:hover,
+  &-button:active,
+  &-button:focus {
+    .career-divider {
+      display: none;
+    }
+  }
+}

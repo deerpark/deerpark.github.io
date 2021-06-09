@@ -58,7 +58,7 @@ export default function Tech() {
       />
       <Para
         odd
-        title='TypScript'
+        title='TypeScript'
         rating={2}
         py='pt-5'
         svg={<IconTS />}

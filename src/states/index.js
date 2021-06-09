@@ -29,3 +29,15 @@ export const profileTabDirectionState = atom({
   key: 'profileTabDirectionState',
   default: 0,
 })
+
+export const careerPopupState = atom({
+  key: 'careerPopupState',
+  default: false,
+})
+
+export const careerPopupContentsState = atom({
+  key: 'careerPopupContentsState',
+  default: {
+    company: 'GS SHOP',
+  },
+})

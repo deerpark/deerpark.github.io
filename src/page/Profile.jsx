@@ -48,7 +48,6 @@ export default function Profile() {
     <AnimatePresence initial={false} custom={[direction, containerWidth]}>
       <motion.div
         className='min-h-screen pt-40'
-        key={profileTab}
         custom={[direction, containerWidth]}
         variants={profileTabVariants}
         initial='enter'

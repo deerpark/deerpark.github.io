@@ -50,18 +50,18 @@ const Tabs = forwardRef(
     },
     ref
   ) => {
-    const [selected, setSelected] = useState({ value })
+    const selectedRef = useRef(value)
     const [translateX, setTranslateX] = useState(0)
     const indicator = useRef(null)
     const [width, setWidth] = useState('auto')
     const handleClickTab = useCallback(
       selectedValue => {
-        setSelected(selectedValue)
         if (onChange) {
           onChange(selectedValue.value)
         }
+        selectedRef.current = selectedValue.value
       },
-      [disabled, selected, value]
+      [disabled, value]
     )
     const handleIdicator = useCallback(el => {
       if (el) {
@@ -86,25 +86,19 @@ const Tabs = forwardRef(
     const init = useCallback(() => {
       const el = indicator?.current
       if (el) {
-        handleIdicator(el.parentNode.childNodes[items.indexOf(items.find(item => item.value === selected.value))])
+        handleIdicator(el.parentNode.childNodes[selectedRef.current])
       }
-    }, [selected])
+    }, [])
 
     useEffect(() => {
       init()
-    }, [selected])
-
-    useEffect(() => {
-      setSelected({ value })
-    }, [value])
-
-    useEffect(() => {
       window.addEventListener('resize', init)
+      window.addEventListener('orientationchange', init)
     }, [])
 
     const renderTab = useCallback(
       option => {
-        const isSelected = selected?.value === option.value
+        const isSelected = value === option.value
         return (
           <a
             key={option.value.toString()}
@@ -126,7 +120,7 @@ const Tabs = forwardRef(
           </a>
         )
       },
-      [selected]
+      [value]
     )
 
     return (

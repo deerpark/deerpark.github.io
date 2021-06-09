@@ -67,7 +67,7 @@ export const careerPopupVariants = {
     opacity: 0,
   }),
   center: {
-    y: -400,
+    y: -578,
     opacity: 1,
   },
   exit: () => ({

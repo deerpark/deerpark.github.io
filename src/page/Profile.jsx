@@ -1,6 +1,6 @@
-import { useEffect, useCallback } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect /* useCallback */ } from 'react'
+import { useRecoilState /* useRecoilValue */ } from 'recoil'
+/* import { motion, AnimatePresence } from 'framer-motion' */
 import About from '../container/Profile/About'
 import Strength from '../container/Profile/Strength'
 import Career from '../container/Profile/Career'
@@ -9,21 +9,21 @@ import {
   profileTabState,
   profileTabStickyState,
   titleStickyState,
-  containerWidthState,
-  profileTabDirectionState,
+  /* containerWidthState,
+  profileTabDirectionState, */
 } from '../states'
-import { profileTabVariants, profileTabs } from '../config'
+/* import { profileTabVariants, profileTabs } from '../config' */
 
-const swipeConfidenceThreshold = 100000
-const swipePower = (offset, velocity) => Math.abs(offset) * velocity
+/* const swipeConfidenceThreshold = 100000
+const swipePower = (offset, velocity) => Math.abs(offset) * velocity */
 
 export default function Profile() {
-  const containerWidth = useRecoilValue(containerWidthState)
+  /* const containerWidth = useRecoilValue(containerWidthState) */
   const [, setTitleSticky] = useRecoilState(titleStickyState)
   const [, setProfileTabSticky] = useRecoilState(profileTabStickyState)
-  const [direction, setDirection] = useRecoilState(profileTabDirectionState)
-  const [profileTab, setProfileTab] = useRecoilState(profileTabState)
-  const paginate = useCallback(
+  /* const [direction, setDirection] = useRecoilState(profileTabDirectionState) */
+  const [profileTab /* setProfileTab */] = useRecoilState(profileTabState)
+  /* const paginate = useCallback(
     newDirection => {
       let tab
       if (profileTab + newDirection < 0) {
@@ -37,7 +37,7 @@ export default function Profile() {
       setDirection(newDirection)
     },
     [profileTab]
-  )
+  ) */
 
   useEffect(() => {
     setTitleSticky(true)
@@ -45,7 +45,8 @@ export default function Profile() {
   }, [])
 
   return (
-    <AnimatePresence initial={false} custom={[direction, containerWidth]}>
+    <div className='min-h-screen pt-40'>
+      {/* <AnimatePresence initial={false} custom={[direction, containerWidth]}>
       <motion.div
         className='min-h-screen pt-40'
         custom={[direction, containerWidth]}
@@ -67,12 +68,13 @@ export default function Profile() {
           } else if (swipe > swipeConfidenceThreshold) {
             paginate(-1)
           }
-        }}>
-        {profileTab === 0 && <About />}
-        {profileTab === 1 && <Career />}
-        {profileTab === 2 && <Strength />}
-        {profileTab === 3 && <Tech />}
-      </motion.div>
-    </AnimatePresence>
+        }}> */}
+      {profileTab === 0 && <About />}
+      {profileTab === 1 && <Career />}
+      {profileTab === 2 && <Strength />}
+      {profileTab === 3 && <Tech />}
+      {/* </motion.div>
+    </AnimatePresence> */}
+    </div>
   )
 }

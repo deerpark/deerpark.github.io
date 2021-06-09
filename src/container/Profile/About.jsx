@@ -132,19 +132,18 @@ export default function About() {
         icon={['fad', 'seedling']}
         iconClassName='text-gray-500 dark:text-opacity-70 bg-white dark:bg-black'
         p={[
-          'UI 디자이너로 시작 후 마크업 개발, 인터렉티브 개발을 거쳐 현재 프론트엔드 개발까지 점점 기술력에 대한 갈망이 깊어지면서 다양한 쪽으로 관심을 가지고 있습니다.',
+          '웹디자이너로 시작하면서 사회에 첫 발을 딛고 마크업 개발, 인터렉티브 개발을 거쳐 현재 프론트엔드 개발까지 개발에 대한 갈망이 깊어 지면서 넓은 도메인에 관심을 가져 왔습니다.',
         ]}
       />
       <Para
         title='역량'
         icon={['fad', 'battery-bolt']}
         p={[
-          'RESTful API + ES6 이상 버전의 JavaScript로 오랜 개발 경험',
-          'NodeJS 환경에서 React 기반 CRA, NextJS 프레임워크로 SSR, CSR 프론트엔드 개발 경험',
-          'AWS, GCP 클라우드 환경에서 프론트엔드 개발 경험',
-          '다양한 Motion 인터렉티브 개발 경험',
-          '디자인 시스템 및 접근성, SEO를 고려한 개발 경험',
-          'GIT, Docker, ESlint, Prettier, Agile을 통한 오랜 협업 경험',
+          'RESTful API + ES6 이상 버전의 JavaScript를 바탕으로 오랜 개발 경험을 갖고 있으며,',
+          'NodeJS 환경에서 React 기반 Create React App, NextJS 프레임워크로 SSR, CSR 프론트엔드 개발 경험을 쌓고 있습니다.',
+          '또한 AWS, GCP 클라우드 환경에서 프론트엔드 개발을 해오고 있고',
+          '더 나아가 디자인 시스템 및 접근성, SEO를 고려하며 다양한 Motion 인터렉티브 개발 경험을 가지고 있습니다.',
+          'GIT, Docker, ESlint, Prettier, Agile을 통한 오랜 협업 경험도 가지고 있습니다.',
         ]}
       />
       <Para

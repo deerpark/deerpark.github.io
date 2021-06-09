@@ -20,7 +20,8 @@ export default function Contents() {
       <Nav />
       <AnimatePresence>
         <motion.div
-          className='h-96 absolute z-40 -bottom-96 left-3.5 right-3.5 p-7 rounded-3xl shadow-xl bg-white dark:bg-gray-800'
+          className='absolute z-40 left-3.5 right-3.5 p-7 rounded-3xl shadow-xl bg-white dark:bg-gray-800'
+          style={{ height: 500, bottom: -500 }}
           variants={careerPopupVariants}
           initial='enter'
           animate={careerPopup ? 'center' : 'enter'}
@@ -48,7 +49,7 @@ export default function Contents() {
               </Button>
             </div>
           </div>
-          <div className='py-10 flex justify-center items-center'>
+          <div className='py-28 flex justify-center items-center'>
             <Empty msg='업데이트 예정' icon={['fat', 'traffic-cone']} />
           </div>
         </motion.div>

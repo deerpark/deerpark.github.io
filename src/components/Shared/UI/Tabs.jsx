@@ -86,6 +86,7 @@ const Tabs = forwardRef(
     const init = useCallback(() => {
       const el = indicator?.current
       if (el) {
+        console.log(selectedRef.current)
         handleIdicator(el.parentNode.childNodes[selectedRef.current])
       }
     }, [])

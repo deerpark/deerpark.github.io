@@ -76,6 +76,21 @@ export const careerPopupVariants = {
   }),
 }
 
+export const magicPopupVariants = {
+  enter: () => ({
+    y: -578,
+    opacity: 0,
+  }),
+  center: {
+    y: 0,
+    opacity: 1,
+  },
+  exit: () => ({
+    y: -578,
+    opacity: 0,
+  }),
+}
+
 export const routes = {
   '/': {
     title: '홈',

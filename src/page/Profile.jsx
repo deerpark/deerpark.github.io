@@ -45,7 +45,7 @@ export default function Profile() {
   }, [])
 
   return (
-    <div className='min-h-screen pt-40'>
+    <div className='pt-40'>
       {/* <AnimatePresence initial={false} custom={[direction, containerWidth]}>
       <motion.div
         className='min-h-screen pt-40'

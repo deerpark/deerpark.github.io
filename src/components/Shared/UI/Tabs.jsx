@@ -86,7 +86,6 @@ const Tabs = forwardRef(
     const init = useCallback(() => {
       const el = indicator?.current
       if (el) {
-        console.log(selectedRef.current)
         handleIdicator(el.parentNode.childNodes[selectedRef.current])
       }
     }, [])
@@ -114,7 +113,7 @@ const Tabs = forwardRef(
                   ? 'text-blue-600 dark:text-blue-600'
                   : 'text-white dark:text-gray-800'
                 : invert
-                ? 'text-blue-100 dark:text-blue-100 hover:text-blue-600'
+                ? 'text-gray-400 dark:text-gray-100 hover:text-blue-600'
                 : 'text-blue-900 dark:text-blue-400 text-opacity-40 hover:text-opacity-60'
             }`}>
             {option.label}

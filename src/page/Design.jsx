@@ -1,9 +1,9 @@
-import { InView } from 'react-intersection-observer'
-import { motion } from 'framer-motion'
+/* import { InView } from 'react-intersection-observer'
+import { motion } from 'framer-motion' */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Cover from '../components/Shared/Cover'
 import Empty from '../components/Shared/UI/Empty'
-import { fadeInVariants } from '../config'
+/* import { fadeInVariants } from '../config' */
 
 export default function Design() {
   return (
@@ -13,7 +13,7 @@ export default function Design() {
         subTitle='디자인 컨텐츠'
         icon={<FontAwesomeIcon className='text-blue-600 dark:text-opacity-70' icon={['fat', 'swatchbook']} size='6x' />}
       />
-      <InView>
+      {/* <InView>
         {({ inView, ref }) => (
           <motion.div
             ref={ref}
@@ -24,7 +24,7 @@ export default function Design() {
             ^^
           </motion.div>
         )}
-      </InView>
+      </InView> */}
       <div className='min-h-screen'>
         <Empty msg='업데이트 예정' icon={['fat', 'traffic-cone']} />
       </div>

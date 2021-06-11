@@ -1,39 +1,8 @@
-import { InView } from 'react-intersection-observer'
-import { motion } from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Para } from '../../components/Shared/UI'
-import { slideInXVariants, slideInXDelayedVariants } from '../../config'
 
 export default function Strength() {
   return (
     <>
-      <InView>
-        {({ inView, ref }) => (
-          <motion.div
-            ref={ref}
-            initial='hidden'
-            animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXVariants}
-            className='profile-image flex justify-center items-center pt-10 pb-10'>
-            <FontAwesomeIcon className='text-blue-600 dark:text-opacity-70' icon={['fat', 'battery-bolt']} size='6x' />
-          </motion.div>
-        )}
-      </InView>
-      <InView>
-        {({ inView, ref }) => (
-          <motion.div
-            ref={ref}
-            initial='hidden'
-            animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXDelayedVariants}
-            className='text-2xl pb-20 text-center'>
-            <h2 className='text-2xl text-gray-600 dark:text-gray-400'>
-              <span className='font-title'>업무적 강점</span>
-            </h2>
-            <p className='text-xs text-gray-500'>실무에 강한 경험</p>
-          </motion.div>
-        )}
-      </InView>
       <Para
         title='SSR'
         desc='SPA(CSR), SSR 개발 경험'

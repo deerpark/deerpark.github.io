@@ -117,7 +117,10 @@ body {
   &-dark {
     display: none;
   }
-  @media (prefers-color-scheme: dark) {
+}
+
+.dark {
+  .profile-image {
     &-light {
       display: none;
     }

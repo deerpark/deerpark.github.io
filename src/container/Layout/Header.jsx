@@ -57,7 +57,7 @@ function Header({ history, location }) {
       <header
         className={`header${
           titleSticky ? '--compact shadow-md' : ''
-        } fixed base:absolute z-30 inset-0 bottom-auto flex items-center transition-all overflow-hidden sm:rounded-t-3xl bg-white dark:bg-gray-800`}>
+        } fixed base:absolute z-30 inset-0 bottom-auto flex items-center transition-all overflow-hidden sm:rounded-t-3xl dark:border-b dark:border-gray-500 dark:border-opacity-10`}>
         <div className='w-full relative z-20 flex flex-col'>
           <div className='w-full flex items-center p-7'>
             <div className='w-24 flex space-x-4 items-center'>
@@ -82,7 +82,7 @@ function Header({ history, location }) {
         <div
           className={`backdrop${
             titleSticky ? '--compact' : ''
-          } absolute inset-0 z-10 backdrop-filter backdrop-blur-sm bg-white dark:bg-black bg-opacity-25 pointer-events-none transition-all overflow-hidden sm:rounded-t-3xl`}
+          } absolute inset-0 z-10 backdrop-filter backdrop-blur-sm bg-white dark:bg-black bg-opacity-25 dark:bg-opacity-25 pointer-events-none transition-all overflow-hidden sm:rounded-t-3xl`}
         />
         <div className='status-bar-style' />
       </header>
@@ -93,7 +93,7 @@ function Header({ history, location }) {
             initial='hidden'
             animate={magicPopup ? 'visible' : 'hidden'}
             variants={fadeInVariants}
-            className='absolute inset-0 z-40 backdrop-filter backdrop-blur-sm bg-gray-500 bg-opacity-50'
+            className='absolute inset-0 z-40 backdrop-filter backdrop-blur-sm bg-gray-500 dark:bg-black bg-opacity-50 dark:bg-opacity-50'
           />
         )}
         <motion.div
@@ -118,7 +118,7 @@ function Header({ history, location }) {
           <div className='flex flex-col'>
             <div className='space-y-3'>
               <h3>화면 모드</h3>
-              <div className='-ml-1'>
+              <div className='inline-block rounded bg-gray-100 dark:bg-gray-900 dark:bg-opacity-50'>
                 <Tabs
                   value={theme}
                   stretch
@@ -126,7 +126,7 @@ function Header({ history, location }) {
                   items={[
                     { label: '라이트', value: 0 },
                     { label: '다크', value: 1 },
-                    { label: '자동', value: 2 },
+                    { label: '시스템 설정', value: 2 },
                   ]}
                 />
               </div>

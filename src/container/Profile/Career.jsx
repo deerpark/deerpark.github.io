@@ -4,63 +4,20 @@
 import { InView } from 'react-intersection-observer'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { motion } from 'framer-motion'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Card from '../../components/Shared/UI/Card'
-import { slideInXVariants, slideInXDelayedVariants, careers } from '../../config'
+import { slideInXDelayedVariants, careers } from '../../config'
 import { careerPopupState, careerPopupContentsState } from '../../states'
 
 export default function Career() {
   const [, setCareerPopup] = useRecoilState(careerPopupState)
   const setCareerPopupContents = useSetRecoilState(careerPopupContentsState)
   return (
-    <div className='min-h-screen pt-10'>
-      <InView>
-        {({ inView, ref }) => (
-          <motion.div
-            ref={ref}
-            initial='hidden'
-            animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXVariants}
-            className='profile-image flex justify-center items-center pt-10 pb-10'>
-            <FontAwesomeIcon className='text-blue-600 dark:text-opacity-70' icon={['fat', 'user-clock']} size='6x' />
-          </motion.div>
-        )}
-      </InView>
-      <InView>
-        {({ inView, ref }) => (
-          <motion.div
-            ref={ref}
-            initial='hidden'
-            animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXDelayedVariants}
-            className='text-2xl pb-20 text-center'>
-            <h2 className='text-2xl text-gray-600 dark:text-gray-400'>
-              <span className='font-title'>경력</span>
-            </h2>
-            <p className='text-xs text-gray-500'>경력 요약</p>
-          </motion.div>
-        )}
-      </InView>
+    <>
       <Card
         className='card relative z-0 mb-5 flex flex-col space-y-5 items-stretch gap-0'
-        p='base:py-7'
+        p='py-0'
         rounded='rounded-none'
         shadow='shadow-none'>
-        <InView>
-          {({ inView, ref }) => (
-            <motion.div
-              ref={ref}
-              initial='hidden'
-              animate={inView ? 'visible' : 'hidden'}
-              variants={slideInXDelayedVariants}
-              className='px-7'>
-              <p className='text-2xs text-gray-500 pl-0.5'>2003 ~ 현재</p>
-              <h2 className='text-lg text-gray-600 dark:text-gray-400'>
-                <span className='font-title'>경력 요약</span>
-              </h2>
-            </motion.div>
-          )}
-        </InView>
         <ul className='flex flex-col items-stretch'>
           {careers.map((career, i) => (
             <InView key={career.company}>
@@ -80,7 +37,7 @@ export default function Career() {
                     }}
                     className={`career-button block transition-all transform ${
                       career.working
-                        ? 'px-3.5 mx-3.5 bg-gray-100 dark:bg-gray-400 dark:bg-opacity-10 rounded-2xl hover:bg-gray-200 dark:hover:bg-gray-300 dark:hover:bg-opacity-10 mb-3.5 active:scale-95'
+                        ? '-mt-3.5 px-3.5 mx-3.5 bg-blue-600 rounded-2xl hover:bg-blue-500 mb-3.5 active:scale-95'
                         : 'px-7 hover:bg-gray-100 dark:hover:bg-gray-400 dark:hover:bg-opacity-10'
                     }`}>
                     <div
@@ -94,8 +51,18 @@ export default function Career() {
                       </div>
                       <div className='flex-grow flex justify-between'>
                         <div className='flex-grow flex flex-col items-stretch'>
-                          <h3 className='text-md text-gray-600 dark:text-gray-400 leading-snug'>{career.company}</h3>
-                          <p className='text-xs text-gray-500'>{career.position}</p>
+                          <h3
+                            className={`text-md ${
+                              career.working ? 'text-white' : 'text-gray-600 dark:text-gray-400'
+                            } leading-snug`}>
+                            {career.company}
+                          </h3>
+                          <p
+                            className={`text-xs ${
+                              career.working ? 'text-white dark:text-opacity-75' : 'text-gray-500'
+                            }`}>
+                            {career.position}
+                          </p>
                         </div>
                         <div
                           className={`w-14 flex-none flex ${
@@ -105,8 +72,10 @@ export default function Career() {
                           }`}>
                           <b
                             className={`w-full flex justify-center items-center px-1 py-1 text-sm rounded-lg ${
-                              career.working ? 'bg-gray-200' : 'bg-gray-100'
-                            } dark:bg-gray-300 dark:bg-opacity-10 font-bold text-gray-600 dark:text-gray-400 leading-none`}>
+                              career.working
+                                ? 'bg-white text-blue-700 bg-opacity-50'
+                                : 'bg-gray-200 dark:bg-gray-300 dark:bg-opacity-10 text-gray-600 dark:text-gray-400'
+                            }  font-bold leading-none`}>
                             {career.start}
                           </b>
                         </div>
@@ -114,7 +83,7 @@ export default function Career() {
                       {!career.working && careers.length - 1 !== i && (
                         <div
                           className='career-divider absolute bottom-0 -right-5 border-b border-gray-100 dark:border-opacity-10'
-                          style={{ left: 80 }}
+                          style={{ left: 58 }}
                         />
                       )}
                     </div>
@@ -125,6 +94,6 @@ export default function Career() {
           ))}
         </ul>
       </Card>
-    </div>
+    </>
   )
 }

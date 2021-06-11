@@ -3,3 +3,8 @@ dist
 .tmp
 bower_components
 test/bower_components
+/.DS_Store
+/build
+/public
+/src
+/yarn-error.log

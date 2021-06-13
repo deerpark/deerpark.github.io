@@ -92,8 +92,12 @@ const Tabs = forwardRef(
 
     useEffect(() => {
       init()
-      window.addEventListener('resize', init)
-      window.addEventListener('orientationchange', init)
+      window.addEventListener('resize', init, true)
+      window.addEventListener('orientationchange', init, true)
+      return () => {
+        window.removeEventListener('resize', init, true)
+        window.removeEventListener('orientationchange', init, true)
+      }
     }, [])
 
     const renderTab = useCallback(

@@ -1,7 +1,10 @@
+import Prismic from '@prismicio/client'
+import { useState, useEffect, useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
-import { Para } from '../../components/Shared/UI'
-import { slideInXVariants, tech } from '../../config'
+import { Para, Empty } from '../../components/Shared/UI'
+import { slideInXVariants /* , tech */ } from '../../config'
+import Client from '../../lib/prismic'
 import { ReactComponent as IconJS } from '../../assets/icons/icon-js.svg'
 import { ReactComponent as IconWebpack } from '../../assets/icons/icon-webpack.svg'
 import { ReactComponent as IconNextJS } from '../../assets/icons/icon-nextjs.svg'
@@ -16,15 +19,16 @@ import { ReactComponent as IconDocker } from '../../assets/icons/icon-docker.svg
 import { ReactComponent as IconSketch } from '../../assets/icons/icon-sketch.svg'
 import { ReactComponent as IconFigma } from '../../assets/icons/icon-figma.svg'
 
-const { stack, tools } = tech
+/* const { stack, tools } = tech */
+
 const icons = {
   javascript: <IconJS />,
-  typescript: <IconWebpack />,
-  nodejs: <IconNextJS />,
+  typescript: <IconTS />,
+  nodejs: <IconNodeJS />,
   react: <IconReact />,
-  webpack: <IconTS />,
-  babel: <IconNodeJS />,
-  nextjs: <IconBabel />,
+  webpack: <IconWebpack />,
+  babel: <IconBabel />,
+  nextjs: <IconNextJS />,
   mobx: <IconMobX />,
   graphql: <IconGraphQL />,
   github: <IconGitHub />,
@@ -34,22 +38,48 @@ const icons = {
 }
 
 export default function Tech() {
-  return (
+  const [stack, setStack] = useState([])
+  const [tools, setTools] = useState([])
+  const [loading, setLoading] = useState(true)
+  const fetchData = useCallback(async () => {
+    const response = await Client.query(Prismic.Predicates.at('document.type', 'tech'))
+    if (response) {
+      setStack(response.results[0].data.body[0].items)
+      setTools(response.results[0].data.body[1].items)
+    }
+  }, [])
+  useEffect(async () => {
+    setLoading(true)
+    try {
+      await fetchData()
+    } catch (err) {
+      throw new Error(`${err}`)
+    } finally {
+      setLoading(false)
+    }
+  }, [])
+  return loading ? (
+    <Empty className='py-20' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
+  ) : (
     <>
-      {stack.map((s, i) => (
-        <Para
-          key={s.id}
-          odd={!!(i % 2)}
-          title={s.title}
-          rating={s.rating}
-          py='pt-5'
-          svg={icons[s.id]}
-          iconClassName={s.iconClassName}
-          iconStyle={{ backgroundColor: s.iconBgColor }}
-          p={s.p}
-          isLast={i === stack.length - 1}
-        />
-      ))}
+      {stack.length ? (
+        stack.map((s, i) => (
+          <Para
+            key={s.id}
+            odd={!!(i % 2)}
+            title={s.title}
+            rating={s.rating}
+            py='pt-5'
+            svg={icons[s.id]}
+            iconClassName={s.iconclassname}
+            iconStyle={{ backgroundColor: s.iconbgcolor }}
+            p={s.p[0].text.split('\n')}
+            isLast={i === stack.length - 1}
+          />
+        ))
+      ) : (
+        <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
+      )}
       <div className='my-7 border-b border-gray-100 dark:border-opacity-5' />
       <InView>
         {({ inView, ref }) => (
@@ -66,20 +96,24 @@ export default function Tech() {
           </motion.div>
         )}
       </InView>
-      {tools.map((t, i) => (
-        <Para
-          key={t.id}
-          odd={!!(i % 2)}
-          title={t.title}
-          rating={t.rating}
-          py='pt-5'
-          svg={icons[t.id]}
-          iconClassName={t.iconClassName}
-          iconStyle={{ backgroundColor: t.iconBgColor }}
-          p={t.p}
-          isLast={i === tools.length - 1}
-        />
-      ))}
+      {tools.length ? (
+        tools.map((t, i) => (
+          <Para
+            key={t.id}
+            odd={!!(i % 2)}
+            title={t.title}
+            rating={t.rating}
+            py='pt-5'
+            svg={icons[t.id]}
+            iconClassName={t.iconclassname}
+            iconStyle={{ backgroundColor: t.iconbgcolor }}
+            p={t.p[0].text.split('\n')}
+            isLast={i === tools.length - 1}
+          />
+        ))
+      ) : (
+        <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
+      )}
     </>
   )
 }

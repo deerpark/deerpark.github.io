@@ -1,4 +1,5 @@
 import { useEffect /* useCallback */ } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { useRecoilState /* useRecoilValue */ } from 'recoil'
 /* import { motion, AnimatePresence } from 'framer-motion' */
 import About from '../container/Profile/About'
@@ -6,7 +7,6 @@ import Strength from '../container/Profile/Strength'
 import Career from '../container/Profile/Career'
 import Tech from '../container/Profile/Tech'
 import {
-  profileTabState,
   profileTabStickyState,
   titleStickyState,
   /* containerWidthState,
@@ -22,7 +22,6 @@ export default function Profile() {
   const [, setTitleSticky] = useRecoilState(titleStickyState)
   const [, setProfileTabSticky] = useRecoilState(profileTabStickyState)
   /* const [direction, setDirection] = useRecoilState(profileTabDirectionState) */
-  const [profileTab /* setProfileTab */] = useRecoilState(profileTabState)
   /* const paginate = useCallback(
     newDirection => {
       let tab
@@ -69,10 +68,14 @@ export default function Profile() {
             paginate(-1)
           }
         }}> */}
-      {profileTab === 0 && <About />}
-      {profileTab === 1 && <Career />}
-      {profileTab === 2 && <Strength />}
-      {profileTab === 3 && <Tech />}
+
+      <Switch>
+        <Redirect exact from='/profile' to='/profile/about' />
+        <Route exact path='/profile/about' component={About} />
+        <Route exact path='/profile/career' component={Career} />
+        <Route exact path='/profile/strength' component={Strength} />
+        <Route exact path='/profile/tech' component={Tech} />
+      </Switch>
       {/* </motion.div>
     </AnimatePresence> */}
     </div>

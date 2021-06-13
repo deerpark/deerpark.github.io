@@ -1,23 +1,22 @@
-import { useRef, useEffect, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { withRouter } from 'react-router-dom'
-import { useRecoilValue, useRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { titleStickyState, profileTabStickyState } from '../../states'
+import { titleStickyState } from '../../states'
 import Button from '../../components/Shared/UI/Button'
 import Tabs from '../../components/Shared/UI/Tabs'
 import ProfileTabs from '../Profile/Tabs'
 import { routes, magicPopupVariants, fadeInVariants } from '../../config'
 import useLocalStorage from '../../hooks/useLocalStorage'
 
-function Header({ history, location }) {
+const profileRoutes = Object.keys(routes).filter(f => f.includes('/profile'))
+
+function Header({ location }) {
   const [theme, setTheme] = useLocalStorage('theme', 2)
   const [magicPopup, setMagicPopup] = useState(false)
   const { pathname } = location
   const titleSticky = useRecoilValue(titleStickyState)
-  const [profileTabSticky, setProfileTabSticky] = useRecoilState(profileTabStickyState)
-  const scrollRootRef = useRef()
-  const pathnameRef = useRef('/')
   const handleChangeDisplayMode = useCallback(v => {
     if (v === 1 || (v === 2 && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.querySelector('html').classList.add('dark')
@@ -36,22 +35,6 @@ function Header({ history, location }) {
   const handleCloseMagic = useCallback(() => {
     setMagicPopup(false)
   }, [magicPopup])
-  useEffect(() => {
-    if (history.action === 'POP') {
-      return
-    }
-    // In all other cases, check fragment/scroll to top
-    if (location.pathname !== pathnameRef.current) {
-      if (scrollRootRef.current) {
-        scrollRootRef.current.scrollIntoView({ block: 'start', behavior: 'smooth' })
-        setProfileTabSticky(false)
-      }
-      pathnameRef.current = location.pathname
-    }
-  })
-  useEffect(() => {
-    scrollRootRef.current = document.querySelector('.ScrollbarsCustom-Content')
-  }, [])
   return (
     <>
       <header
@@ -77,7 +60,11 @@ function Header({ history, location }) {
               </Button>
             </div>
           </div>
-          <AnimatePresence>{pathname === '/profile' && profileTabSticky && <ProfileTabs />}</AnimatePresence>
+          <AnimatePresence>
+            {pathname.includes('/profile') && (
+              <ProfileTabs value={profileRoutes.indexOf(pathname) < 0 ? 0 : profileRoutes.indexOf(pathname)} />
+            )}
+          </AnimatePresence>
         </div>
         <div
           className={`backdrop${

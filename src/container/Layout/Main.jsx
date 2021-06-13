@@ -16,7 +16,7 @@ function Content() {
         <Route exact path='/'>
           <Welcome>Welcome!</Welcome>
         </Route>
-        <Route exact path='/profile'>
+        <Route path='/profile'>
           <Profile />
         </Route>
         <Route exact path='/ux'>

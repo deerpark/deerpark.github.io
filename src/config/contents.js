@@ -5,8 +5,17 @@ export const routes = {
   '/': {
     title: '홈',
   },
-  '/profile': {
-    title: '프로필',
+  '/profile/about': {
+    title: '소개',
+  },
+  '/profile/career': {
+    title: '경력',
+  },
+  '/profile/strength': {
+    title: '업무적 강점',
+  },
+  '/profile/tech': {
+    title: '기술스택',
   },
   '/ux': {
     title: 'UX',

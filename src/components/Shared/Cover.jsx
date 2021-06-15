@@ -5,7 +5,15 @@ import { motion } from 'framer-motion'
 import { slideInXVariants, slideInXDelayedVariants } from '../../config'
 import { titleStickyState, containerHeightState } from '../../states'
 
-export default function Cover({ icon, title, subTitle, dense, setStickyAnyState = () => {} }) {
+export default function Cover({
+  icon,
+  className,
+  title,
+  minHeight = true,
+  subTitle,
+  dense,
+  setStickyAnyState = () => {},
+}) {
   const [, setTitleSticky] = useRecoilState(titleStickyState)
   const containerHeight = useRecoilValue(containerHeightState)
   const handleStickyTitle = useCallback(inview => {
@@ -14,10 +22,10 @@ export default function Cover({ icon, title, subTitle, dense, setStickyAnyState 
   }, [])
   return (
     <div
-      className='flex flex-col justify-center items-stretch'
-      style={{ minHeight: `calc(${containerHeight}px - 64px)` }}>
+      className={`flex flex-col justify-center items-stretch ${className || ''}`}
+      style={{ minHeight: minHeight ? `calc(${containerHeight}px - 64px)` : 0 }}>
       {icon && (
-        <InView onChange={handleStickyTitle}>
+        <InView onChange={minHeight ? handleStickyTitle : () => {}}>
           {({ inView, ref }) => (
             <motion.div
               ref={ref}
@@ -30,14 +38,14 @@ export default function Cover({ icon, title, subTitle, dense, setStickyAnyState 
           )}
         </InView>
       )}
-      <InView>
+      <InView onChange={minHeight ? () => {} : handleStickyTitle}>
         {({ inView, ref }) => (
           <motion.div
             ref={ref}
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
             variants={slideInXDelayedVariants}
-            className='text-3xl pb-40 text-center'>
+            className='text-3xl mb-40 text-center'>
             {title && (
               <h2 className='text-3xl text-gray-600 dark:text-gray-400'>
                 <span className='font-title'>{title}</span>

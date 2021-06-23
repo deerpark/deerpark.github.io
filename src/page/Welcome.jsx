@@ -6,7 +6,7 @@ export default function Welcome() {
       <Cover
         dense
         title='김용만'
-        subTitle='프론트엔드 엔지니어'
+        subTitle='디자인 / 개발'
         icon={
           <>
             <img className='profile-image-dark' src='/profile-image-dark.png' alt='' width='205' />

@@ -6,7 +6,6 @@ import Nav from './Nav'
 import Header from './Header'
 import Main from './Main'
 import Button from '../../components/Shared/UI/Button'
-import Empty from '../../components/Shared/UI/Empty'
 import { careerPopupVariants } from '../../config'
 import { careerPopupState, careerPopupContentsState } from '../../states'
 
@@ -30,7 +29,7 @@ export default function Contents() {
             y: { type: 'spring', stiffness: 300, damping: 30 },
             opacity: { duration: 0.2 },
           }}>
-          <div className='flex justify-between'>
+          <div className='flex-none flex justify-between'>
             <div>
               <h2 className='text-2xl text-gray-600 dark:text-gray-400'>
                 <span className='font-title'>{careerPopupContents.company}</span>
@@ -49,8 +48,17 @@ export default function Contents() {
               </Button>
             </div>
           </div>
-          <div className='py-28 flex justify-center items-center'>
-            <Empty msg='업데이트 예정' icon={['fat', 'traffic-cone']} />
+          <div className='h-96 py-5 flex flex-col items-stretch space-y-8 overflow-auto'>
+            {careerPopupContents.details.map(d => (
+              <div key={d.title} className='flex flex-col items-stretch space-y-2'>
+                <h3>{d.title}</h3>
+                <div className='text-sm'>
+                  {d.desc[0].text.split('\n').map((p, i) => (
+                    <div key={i.toString()}>{p}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
       </AnimatePresence>

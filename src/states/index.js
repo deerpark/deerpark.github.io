@@ -38,6 +38,7 @@ export const careerPopupState = atom({
 export const careerPopupContentsState = atom({
   key: 'careerPopupContentsState',
   default: {
-    company: 'GS SHOP',
+    company: '',
+    details: [],
   },
 })

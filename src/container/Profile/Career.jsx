@@ -14,6 +14,7 @@ import { careerPopupState, careerPopupContentsState } from '../../states'
 
 export default function Career() {
   const [careers, setCareers] = useState([])
+  const [details, setDetails] = useState([])
   const [loading, setLoading] = useState(true)
   const [, setCareerPopup] = useRecoilState(careerPopupState)
   const setCareerPopupContents = useSetRecoilState(careerPopupContentsState)
@@ -21,6 +22,7 @@ export default function Career() {
     const response = await Client.query(Prismic.Predicates.at('document.type', 'career'))
     if (response) {
       setCareers(response.results[0].data.body[0].items)
+      setDetails(response.results[0].data.details)
     }
   }, [])
   useEffect(async () => {
@@ -59,6 +61,7 @@ export default function Career() {
                           setCareerPopupContents(oldState => ({
                             ...oldState,
                             company: career.company[0].text,
+                            details: details.filter(d => d.key === career.key),
                           }))
                         }}
                         className={`career-button block transition-all transform ${

@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion' */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Cover from '../components/Shared/Cover'
-import Empty from '../components/Shared/UI/Empty'
+import { ReactComponent as AntmanBanner } from '../assets/images/antman.svg'
 /* import { fadeInVariants } from '../config' */
 
 export default function Design() {
@@ -13,20 +13,13 @@ export default function Design() {
         subTitle='디자인 컨텐츠'
         icon={<FontAwesomeIcon className='text-blue-600 dark:text-opacity-70' icon={['fat', 'swatchbook']} size='6x' />}
       />
-      {/* <InView>
-        {({ inView, ref }) => (
-          <motion.div
-            ref={ref}
-            initial='hidden'
-            animate={inView ? 'visible' : 'hidden'}
-            variants={fadeInVariants}
-            className='flex items-center mb-10 h-40 bg-gray-400 text-gray-400 mx-7 rounded-3xl'>
-            ^^
-          </motion.div>
-        )}
-      </InView> */}
-      <div className='min-h-screen'>
-        <Empty msg='업데이트 예정' icon={['fat', 'traffic-cone']} />
+      <div className='min-h-screen px-7 grid grid-flow-rows place-items-center grid-cols-1 sm:grid-cols-2 auto-rows-max gap-7'>
+        <a
+          className='flex h-72 sm:h-52 justify-center transform transition-all duration-500 active:scale-95 hover:scale-105 rounded-3xl shadow-3xl overflow-hidden'
+          href='https://www.antman.kr'
+          target='_blank'>
+          <AntmanBanner className='w-full h-full rounded-3xl overflow-hidden' />
+        </a>
       </div>
     </>
   )

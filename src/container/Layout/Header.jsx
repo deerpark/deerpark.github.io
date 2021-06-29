@@ -37,10 +37,7 @@ function Header({ location }) {
   }, [magicPopup])
   return (
     <>
-      <header
-        className={`header${
-          titleSticky ? '--compact shadow-md' : ''
-        } fixed base:absolute z-30 inset-0 bottom-auto flex items-center transition-all overflow-hidden sm:rounded-t-3xl dark:border-b dark:border-gray-500 dark:border-opacity-10`}>
+      <header className='safe-area-inset-padding-top flex items-center transition-all sm:rounded-t-3xl dark:border-b dark:border-gray-500 dark:border-opacity-10'>
         <div className='w-full relative z-20 flex flex-col'>
           <div className='w-full flex items-center p-7'>
             <div className='w-24 flex space-x-4 items-center'>
@@ -66,11 +63,6 @@ function Header({ location }) {
             )}
           </AnimatePresence>
         </div>
-        <div
-          className={`backdrop${
-            titleSticky ? '--compact' : ''
-          } absolute inset-0 z-10 backdrop-filter backdrop-blur-sm bg-white dark:bg-black bg-opacity-25 dark:bg-opacity-25 pointer-events-none transition-all overflow-hidden sm:rounded-t-3xl`}
-        />
         <div className='status-bar-style' />
       </header>
       <AnimatePresence>
@@ -93,7 +85,7 @@ function Header({ location }) {
             y: { type: 'spring', stiffness: 300, damping: 30 },
             opacity: { duration: 0.2 },
           }}
-          className='absolute z-50 inset-7 bottom-auto p-7 space-y-7 flex flex-col items-stretch rounded-3xl shadow-xl bg-white dark:bg-gray-800'>
+          className='absolute z-50 safe-area-inset-margin-top inset-7 bottom-auto p-7 space-y-7 flex flex-col items-stretch rounded-3xl shadow-xl bg-white dark:bg-gray-800'>
           <div className='flex justify-between'>
             <h2 className='font-bold text-gray-900 dark:text-gray-100 text-xl'>설정</h2>
             <div>

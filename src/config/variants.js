@@ -1,4 +1,16 @@
 /**
+ * 부모 애니메이션 설정
+ */
+export const parentVariants = {
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+  },
+  hidden: {
+    transition: { staggerChildren: 0.1, staggerDirection: -1 },
+  },
+}
+
+/**
  * 슬라이드 인 애니메이션 설정
  */
 export const slideInXVariants = {
@@ -24,16 +36,34 @@ export const slideInXDelayedVariants = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.5,
-      delay: 0.1,
-      y: { stiffness: 100, velocity: -100 },
+      stiffness: 1000,
     },
   },
   hidden: {
     opacity: 0,
-    x: 10,
+    x: 20,
     transition: {
-      delay: 0.1,
+      stiffness: 1000,
+    },
+  },
+}
+
+/**
+ * 지연된 슬라이드 업 애니메이션 설정
+ */
+export const slideUpXDelayedVariants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      stiffness: 1000,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    y: 20,
+    transition: {
+      stiffness: 1000,
     },
   },
 }

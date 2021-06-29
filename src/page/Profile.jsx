@@ -44,7 +44,7 @@ export default function Profile() {
   }, [])
 
   return (
-    <div className='pt-40'>
+    <div className='scroll-contents flex-grow flex-shrink overflow-x-hidden overflow-y-auto'>
       {/* <AnimatePresence initial={false} custom={[direction, containerWidth]}>
       <motion.div
         className='min-h-screen pt-40'

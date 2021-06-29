@@ -2,7 +2,7 @@ import Cover from '../components/Shared/Cover'
 
 export default function Welcome() {
   return (
-    <>
+    <div className='scroll-contents flex-grow flex-shrink overflow-x-hidden overflow-y-auto'>
       <Cover
         dense
         title='김용만'
@@ -14,6 +14,6 @@ export default function Welcome() {
           </>
         }
       />
-    </>
+    </div>
   )
 }

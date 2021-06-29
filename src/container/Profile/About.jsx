@@ -4,7 +4,7 @@ import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import Client from '../../lib/prismic'
 import { Para, Empty } from '../../components/Shared/UI'
-import { slideInXVariants } from '../../config'
+import { parentVariants, slideInXDelayedVariants } from '../../config'
 
 export default function About() {
   const [name, setName] = useState()
@@ -33,18 +33,18 @@ export default function About() {
     <Empty className='py-20' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
   ) : (
     <>
-      <InView>
-        {({ inView, ref }) => (
-          <motion.div
-            ref={ref}
-            initial='hidden'
-            animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXVariants}
-            className='mb-7 bg-white dark:bg-black dark:bg-opacity-10 mx-7 py-5 pl-0 rounded-3xl'>
-            <ul className='space-y-5'>
+      <div className='mb-7 bg-white dark:bg-black dark:bg-opacity-10 mx-7 py-5 pl-0 rounded-3xl'>
+        <InView>
+          {({ inView, ref }) => (
+            <motion.ul
+              ref={ref}
+              initial='hidden'
+              animate={inView ? 'visible' : 'hidden'}
+              variants={parentVariants}
+              className='space-y-5'>
               {about.length ? (
                 about.map((a, i) => (
-                  <li key={a.title}>
+                  <motion.li key={a.title} variants={slideInXDelayedVariants}>
                     <Para
                       title={a.value}
                       desc={a.title}
@@ -56,15 +56,15 @@ export default function About() {
                       reverse
                       animate={false}
                     />
-                  </li>
+                  </motion.li>
                 ))
               ) : (
                 <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
               )}
-            </ul>
-          </motion.div>
-        )}
-      </InView>
+            </motion.ul>
+          )}
+        </InView>
+      </div>
       <div className='my-7 border-b border-gray-100 dark:border-opacity-5' />
       <InView>
         {({ inView, ref }) => (
@@ -72,7 +72,7 @@ export default function About() {
             ref={ref}
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXVariants}
+            variants={slideInXDelayedVariants}
             className='text-2xl pt-10 pb-20 text-center'>
             <h2 className='text-2xl text-gray-600 dark:text-gray-400'>
               <span className='font-title'>자기 소개서</span>

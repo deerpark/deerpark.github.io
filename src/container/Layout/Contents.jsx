@@ -51,11 +51,11 @@ export default function Contents() {
           <div className='h-96 py-5 flex flex-col items-stretch space-y-8 overflow-auto'>
             {careerPopupContents.details.map(d => (
               <div key={d.title} className='flex flex-col items-stretch space-y-2'>
-                <h3>{d.title}</h3>
+                {d?.title && <h3>{d?.title}</h3>}
+                {d?.subtitle && <div className='text-sm font-bold'>{d?.subtitle}</div>}
                 <div className='text-sm'>
-                  {d.desc[0].text.split('\n').map((p, i) => (
-                    <div key={i.toString()}>{p}</div>
-                  ))}
+                  {d.desc[0]?.text?.split('\n')?.length &&
+                    d.desc[0].text.split('\n').map((p, i) => <div key={i.toString()}>{p}</div>)}
                 </div>
               </div>
             ))}

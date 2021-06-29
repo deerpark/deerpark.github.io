@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import { Para, Empty } from '../../components/Shared/UI'
-import { slideInXVariants /* , tech */ } from '../../config'
+import { parentVariants, slideInXDelayedVariants, slideInXVariants /* , tech */ } from '../../config'
 import Client from '../../lib/prismic'
 import { ReactComponent as IconJS } from '../../assets/icons/icon-js.svg'
 import { ReactComponent as IconWebpack } from '../../assets/icons/icon-webpack.svg'
@@ -62,24 +62,31 @@ export default function Tech() {
     <Empty className='py-20' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
   ) : (
     <>
-      {stack.length ? (
-        stack.map((s, i) => (
-          <Para
-            key={s.id}
-            odd={!!(i % 2)}
-            title={s.title}
-            rating={s.rating}
-            py='pt-5'
-            svg={icons[s.id]}
-            iconClassName={s.iconclassname}
-            iconStyle={{ backgroundColor: s.iconbgcolor }}
-            p={s.p[0].text.split('\n')}
-            isLast={i === stack.length - 1}
-          />
-        ))
-      ) : (
-        <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
-      )}
+      <InView>
+        {({ inView, ref }) => (
+          <motion.ul ref={ref} initial='hidden' animate={inView ? 'visible' : 'hidden'} variants={parentVariants}>
+            {stack.length ? (
+              stack.map((s, i) => (
+                <motion.li key={s.id} variants={slideInXDelayedVariants}>
+                  <Para
+                    odd={!!(i % 2)}
+                    title={s.title}
+                    rating={s.rating}
+                    py='pt-5'
+                    svg={icons[s.id]}
+                    iconClassName={s.iconclassname}
+                    iconStyle={{ backgroundColor: s.iconbgcolor }}
+                    p={s.p[0].text.split('\n')}
+                    isLast={i === stack.length - 1}
+                  />
+                </motion.li>
+              ))
+            ) : (
+              <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
+            )}
+          </motion.ul>
+        )}
+      </InView>
       <div className='my-7 border-b border-gray-100 dark:border-opacity-5' />
       <InView>
         {({ inView, ref }) => (
@@ -96,24 +103,31 @@ export default function Tech() {
           </motion.div>
         )}
       </InView>
-      {tools.length ? (
-        tools.map((t, i) => (
-          <Para
-            key={t.id}
-            odd={!!(i % 2)}
-            title={t.title}
-            rating={t.rating}
-            py='pt-5'
-            svg={icons[t.id]}
-            iconClassName={t.iconclassname}
-            iconStyle={{ backgroundColor: t.iconbgcolor }}
-            p={t.p[0].text.split('\n')}
-            isLast={i === tools.length - 1}
-          />
-        ))
-      ) : (
-        <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
-      )}
+      <InView>
+        {({ inView, ref }) => (
+          <motion.ul ref={ref} initial='hidden' animate={inView ? 'visible' : 'hidden'} variants={parentVariants}>
+            {tools.length ? (
+              tools.map((t, i) => (
+                <motion.li key={t.id} variants={slideInXDelayedVariants}>
+                  <Para
+                    odd={!!(i % 2)}
+                    title={t.title}
+                    rating={t.rating}
+                    py='pt-5'
+                    svg={icons[t.id]}
+                    iconClassName={t.iconclassname}
+                    iconStyle={{ backgroundColor: t.iconbgcolor }}
+                    p={t.p[0].text.split('\n')}
+                    isLast={i === tools.length - 1}
+                  />
+                </motion.li>
+              ))
+            ) : (
+              <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
+            )}
+          </motion.ul>
+        )}
+      </InView>
     </>
   )
 }

@@ -38,8 +38,11 @@
     
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=deerpark-github-io"></script>
     <title>김용만</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=deerpark-github-io"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-47ZVJH0VQF"></script>
     <script>
@@ -49,8 +52,12 @@
 
       gtag('config', 'G-47ZVJH0VQF');
     </script>
-  </head>
-  <body>
-    <div id="root"></div>
+    <script>
+      if (('theme' in localStorage) && (JSON.parse(localStorage.theme) === 'dark') || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.querySelector('html').classList.add('dark');
+      } else {
+        document.querySelector('html').classList.remove('dark');
+      };
+    </script>
   </body>
 </html>

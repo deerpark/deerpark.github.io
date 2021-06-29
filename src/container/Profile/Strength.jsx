@@ -1,7 +1,10 @@
 import Prismic from '@prismicio/client'
 import { useState, useEffect, useCallback } from 'react'
+import { InView } from 'react-intersection-observer'
+import { motion } from 'framer-motion'
 import { Para, Empty } from '../../components/Shared/UI'
 import Client from '../../lib/prismic'
+import { parentVariants, slideInXDelayedVariants } from '../../config'
 
 export default function Strength() {
   const [strengths, setStrength] = useState()
@@ -26,22 +29,29 @@ export default function Strength() {
     <Empty className='py-20' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
   ) : (
     <>
-      {strengths.length ? (
-        strengths.map((strength, i) => (
-          <Para
-            key={strength.title}
-            odd={!!(i % 2)}
-            title={strength.title}
-            desc={strength.desc}
-            iconClassName={i % 2 ? `text-gray-500 dark:text-opacity-70 bg-white dark:bg-black` : ''}
-            icon={['fad', strength.icon]}
-            p={strength.p[0].text.split('\n')}
-            isLast={i === strengths.length - 1}
-          />
-        ))
-      ) : (
-        <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
-      )}
+      <InView>
+        {({ inView, ref }) => (
+          <motion.ul ref={ref} initial='hidden' animate={inView ? 'visible' : 'hidden'} variants={parentVariants}>
+            {strengths.length ? (
+              strengths.map((strength, i) => (
+                <motion.li key={strength.title} variants={slideInXDelayedVariants}>
+                  <Para
+                    odd={!!(i % 2)}
+                    title={strength.title}
+                    desc={strength.desc}
+                    iconClassName={i % 2 ? `text-gray-500 dark:text-opacity-70 bg-white dark:bg-black` : ''}
+                    icon={['fad', strength.icon]}
+                    p={strength.p[0].text.split('\n')}
+                    isLast={i === strengths.length - 1}
+                  />
+                </motion.li>
+              ))
+            ) : (
+              <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
+            )}
+          </motion.ul>
+        )}
+      </InView>
     </>
   )
 }

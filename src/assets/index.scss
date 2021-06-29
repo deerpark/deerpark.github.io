@@ -47,23 +47,20 @@ body {
   @apply bg-gray-100 xs:dark:bg-gray-500 xs:dark:bg-opacity-10 w-full max-w-full h-full max-h-screen relative z-10;
 }
 
-.header {
-  padding-top: calc(env(safe-area-inset-top) * 0.8);
-  &--compact {
-    padding-top: calc(env(safe-area-inset-top) * 0.8);
-  }
+.safe-area-inset-top {
+  top: calc(env(safe-area-inset-top) * 0.8);
 }
 
-.routes {
-  padding-top: calc(96px + env(safe-area-inset-top));
+.safe-area-inset-padding-top {
+  padding-top: calc(env(safe-area-inset-top) * 0.8);
+}
+
+.safe-area-inset-margin-top {
+  margin-top: calc(env(safe-area-inset-top) * 0.8);
 }
 
 .nav-link.active {
   @apply bg-white dark:bg-blue-600 dark:bg-opacity-50 text-blue-700 dark:text-white;
-}
-
-.scrollarea .scrollbar-container.vertical {
-  top: calc(84px + env(safe-area-inset-top)) !important;
 }
 
 .inview-in {
@@ -128,14 +125,6 @@ body {
       display: block;
     }
   }
-}
-
-.ScrollbarsCustom-Scroller {
-  @apply transition-all;
-}
-
-.ScrollbarsCustom-Content {
-  margin-top: env(safe-area-inset-top);
 }
 
 .career {

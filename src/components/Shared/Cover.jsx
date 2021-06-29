@@ -25,7 +25,7 @@ export default function Cover({
       className={`flex flex-col justify-center items-stretch ${className || ''}`}
       style={{ minHeight: minHeight ? `calc(${containerHeight}px - 64px)` : 0 }}>
       {icon && (
-        <InView onChange={minHeight ? handleStickyTitle : () => {}}>
+        <InView>
           {({ inView, ref }) => (
             <motion.div
               ref={ref}
@@ -38,7 +38,7 @@ export default function Cover({
           )}
         </InView>
       )}
-      <InView onChange={minHeight ? () => {} : handleStickyTitle}>
+      <InView onChange={handleStickyTitle}>
         {({ inView, ref }) => (
           <motion.div
             ref={ref}

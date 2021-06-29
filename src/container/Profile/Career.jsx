@@ -8,7 +8,7 @@ import { InView } from 'react-intersection-observer'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { motion } from 'framer-motion'
 import { Card, Empty } from '../../components/Shared/UI'
-import { slideInXDelayedVariants /* , careers */ } from '../../config'
+import { parentVariants, slideInXDelayedVariants /* , careers */ } from '../../config'
 import Client from '../../lib/prismic'
 import { careerPopupState, careerPopupContentsState } from '../../states'
 
@@ -45,16 +45,17 @@ export default function Career() {
         {loading ? (
           <Empty className='py-20' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
         ) : (
-          <ul className='flex flex-col items-stretch'>
-            {careers.length ? (
-              careers.map((career, i) => (
-                <InView key={career.company[0].text}>
-                  {({ inView, ref }) => (
-                    <motion.li
-                      ref={ref}
-                      initial='hidden'
-                      animate={inView ? 'visible' : 'hidden'}
-                      variants={slideInXDelayedVariants}>
+          <InView>
+            {({ inView, ref }) => (
+              <motion.ul
+                ref={ref}
+                initial='hidden'
+                animate={inView ? 'visible' : 'hidden'}
+                className='flex flex-col items-stretch'
+                variants={parentVariants}>
+                {careers.length ? (
+                  careers.map((career, i) => (
+                    <motion.li key={career.company[0].text} variants={slideInXDelayedVariants}>
                       <a
                         onClick={() => {
                           setCareerPopup(true)
@@ -118,13 +119,13 @@ export default function Career() {
                         </div>
                       </a>
                     </motion.li>
-                  )}
-                </InView>
-              ))
-            ) : (
-              <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
+                  ))
+                ) : (
+                  <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />
+                )}
+              </motion.ul>
             )}
-          </ul>
+          </InView>
         )}
       </Card>
     </>

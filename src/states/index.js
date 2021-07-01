@@ -39,6 +39,7 @@ export const careerPopupContentsState = atom({
   key: 'careerPopupContentsState',
   default: {
     company: '',
+    id: '',
     details: [],
   },
 })

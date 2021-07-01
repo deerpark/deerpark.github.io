@@ -8,6 +8,7 @@
       ]
     }],
     "block-no-empty": false,
+    "property-no-unknown": false,
     "unit-no-unknown": [true, {
       "ignoreUnits": ["/.*/"]
     }],

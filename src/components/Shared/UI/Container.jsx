@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+import { motion } from 'framer-motion'
 import classNames from 'classnames'
 
 function Card({ children, className = '', p, rounded = 'sm:rounded-3xl', shadow = 'sm:shadow-lg' }, ref) {
@@ -10,9 +11,9 @@ function Card({ children, className = '', p, rounded = 'sm:rounded-3xl', shadow 
     rounded
   )
   return (
-    <div ref={ref} className={classes}>
+    <motion.div ref={ref} className={classes}>
       {children}
-    </div>
+    </motion.div>
   )
 }
 

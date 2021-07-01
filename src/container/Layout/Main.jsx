@@ -16,7 +16,7 @@ const Main = () => (
     <Route exact path='/ux'>
       <UX />
     </Route>
-    <Route exact path='/dev'>
+    <Route path='/dev'>
       <Dev />
     </Route>
     <Route exact path='/design'>

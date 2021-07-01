@@ -72,15 +72,18 @@ export const slideUpXDelayedVariants = {
  * 페이드 인 애니메이션 설정
  */
 export const fadeInVariants = {
+  enter: () => ({
+    opacity: 0,
+  }),
   visible: {
     opacity: 1,
     transition: {
       duration: 0.8,
     },
   },
-  hidden: {
+  exit: () => ({
     opacity: 0,
-  },
+  }),
 }
 
 /**
@@ -112,7 +115,7 @@ export const careerPopupVariants = {
     opacity: 0,
   }),
   center: {
-    y: -578,
+    y: -478,
     opacity: 1,
   },
   exit: () => ({
@@ -126,7 +129,7 @@ export const careerPopupVariants = {
  */
 export const magicPopupVariants = {
   enter: () => ({
-    y: -578,
+    y: -478,
     opacity: 0,
   }),
   center: {
@@ -134,7 +137,17 @@ export const magicPopupVariants = {
     opacity: 1,
   },
   exit: () => ({
-    y: -578,
+    y: -478,
     opacity: 0,
   }),
 }
+
+/**
+ * 열기 애니메이션 설정
+ */
+export const openSpring = { type: 'spring', stiffness: 200, damping: 30 }
+
+/**
+ * 닫기 애니메이션 설정
+ */
+export const closeSpring = { type: 'spring', stiffness: 300, damping: 35 }

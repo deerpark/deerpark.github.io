@@ -5,7 +5,7 @@ import Prismic from '@prismicio/client'
 /* import { Date, Link, RichText } from 'prismic-reactjs' */
 import { useState, useEffect, useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { motion } from 'framer-motion'
 import { Card, Empty } from '../../components/Shared/UI'
 import { parentVariants, slideInXDelayedVariants /* , careers */ } from '../../config'
@@ -16,7 +16,7 @@ export default function Career() {
   const [careers, setCareers] = useState([])
   const [details, setDetails] = useState([])
   const [loading, setLoading] = useState(true)
-  const [, setCareerPopup] = useRecoilState(careerPopupState)
+  const setCareerPopup = useSetRecoilState(careerPopupState)
   const setCareerPopupContents = useSetRecoilState(careerPopupContentsState)
   const fetchData = useCallback(async () => {
     const response = await Client.query(Prismic.Predicates.at('document.type', 'career'))
@@ -61,6 +61,7 @@ export default function Career() {
                           setCareerPopup(true)
                           setCareerPopupContents(oldState => ({
                             ...oldState,
+                            id: career.key,
                             company: career.company[0].text,
                             details: details.filter(d => d.key === career.key),
                           }))

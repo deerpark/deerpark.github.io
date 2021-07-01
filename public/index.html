@@ -53,7 +53,8 @@
       gtag('config', 'G-47ZVJH0VQF');
     </script>
     <script>
-      if (('theme' in localStorage) && (JSON.parse(localStorage.theme) === 'dark') || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      console.log(('theme' in localStorage) && (+JSON.parse(localStorage.theme) === 2) || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+      if (('theme' in localStorage) && (+JSON.parse(localStorage.theme) === 2) || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.querySelector('html').classList.add('dark');
       } else {
         document.querySelector('html').classList.remove('dark');

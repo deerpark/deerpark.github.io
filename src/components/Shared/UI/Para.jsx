@@ -1,6 +1,7 @@
+/* eslint-disable no-nested-ternary */
 import { forwardRef, useMemo } from 'react'
 import { InView } from 'react-intersection-observer'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import classnames from 'classnames'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fadeInVariants } from '../../../config'
@@ -61,7 +62,7 @@ function ParaContent({
         }`}
         style={iconStyle}>
         {svg && svg}
-        {!svg && (image ? <img src={image} alt='' /> : <FontAwesomeIcon icon={icon} size={iconSize} />)}
+        {!svg && (image ? <img src={image} alt='' /> : icon ? <FontAwesomeIcon icon={icon} size={iconSize} /> : '')}
       </div>
       <div className='flex-grow flex flex-col items-stretch'>
         {title && (
@@ -121,27 +122,30 @@ function Para(
       {animate ? (
         <InView>
           {({ inView, ref }) => (
-            <motion.div
-              ref={ref}
-              initial='hidden'
-              animate={inView ? 'visible' : 'hidden'}
-              variants={fadeInVariants}
-              className='flex items-center space-x-5 pb-5'>
-              <ParaContent
-                image={image}
-                title={title}
-                desc={desc}
-                rating={rating}
-                icon={icon}
-                svg={svg}
-                iconStyle={iconStyle}
-                compact={compact}
-                titleBorderBottom={titleBorderBottom}
-                reverse={reverse}
-                iconSize={iconSize}
-                iconClassName={iconClassName}
-              />
-            </motion.div>
+            <AnimatePresence>
+              <motion.div
+                ref={ref}
+                initial='enter'
+                animate={inView ? 'visible' : 'enter'}
+                exit='exit'
+                variants={fadeInVariants}
+                className='flex items-center space-x-5 pb-5'>
+                <ParaContent
+                  image={image}
+                  title={title}
+                  desc={desc}
+                  rating={rating}
+                  icon={icon}
+                  svg={svg}
+                  iconStyle={iconStyle}
+                  compact={compact}
+                  titleBorderBottom={titleBorderBottom}
+                  reverse={reverse}
+                  iconSize={iconSize}
+                  iconClassName={iconClassName}
+                />
+              </motion.div>
+            </AnimatePresence>
           )}
         </InView>
       ) : (
@@ -163,14 +167,17 @@ function Para(
       {p?.map((para, i) => (
         <InView key={i.toString()}>
           {({ inView, ref }) => (
-            <motion.div
-              ref={ref}
-              initial='hidden'
-              animate={inView ? 'visible' : 'hidden'}
-              variants={fadeInVariants}
-              className='pb-5 pl-0 xs:pl-16 ml-1.5 leading-normal'>
-              {para}
-            </motion.div>
+            <AnimatePresence>
+              <motion.div
+                ref={ref}
+                initial='enter'
+                animate={inView ? 'visible' : 'enter'}
+                variants={fadeInVariants}
+                exit='exit'
+                className='pb-5 pl-0 xs:pl-16 ml-1.5 leading-normal'>
+                {para}
+              </motion.div>
+            </AnimatePresence>
           )}
         </InView>
       ))}

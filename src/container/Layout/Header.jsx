@@ -8,7 +8,7 @@ import Button from '../../components/Shared/UI/Button'
 import Tabs from '../../components/Shared/UI/Tabs'
 import ProfileTabs from '../Profile/Tabs'
 import { routes, magicPopupVariants, fadeInVariants } from '../../config'
-import useLocalStorage from '../../hooks/useLocalStorage'
+import useLocalStorage from '../../hooks/use-localstorage'
 
 const profileRoutes = Object.keys(routes).filter(f => f.includes('/profile'))
 
@@ -69,9 +69,10 @@ function Header({ location }) {
         {magicPopup && (
           <motion.div
             key='backdrop'
-            initial='hidden'
-            animate={magicPopup ? 'visible' : 'hidden'}
+            initial='enter'
+            animate={magicPopup ? 'visible' : 'enter'}
             variants={fadeInVariants}
+            exit='exit'
             className='absolute inset-0 z-40 backdrop-filter backdrop-blur-sm bg-gray-500 dark:bg-black bg-opacity-50 dark:bg-opacity-50'
           />
         )}

@@ -3,7 +3,7 @@ import Button from '../../components/Shared/UI/Button'
 
 export default function Nav() {
   return (
-    <div className='nav relative z-50 h-16 flex-none flex justify-center bg-blue-600 dark:bg-black dark:border-t dark:border-white dark:border-opacity-10 rounded-t-md sm:rounded-b-3xl'>
+    <div className='nav relative z-30 h-16 flex-none flex justify-center bg-blue-600 dark:bg-black dark:border-t dark:border-white dark:border-opacity-10 rounded-t-md sm:rounded-b-3xl'>
       <menu className='h-full w-full p-0 m-0 flex justify-between items-stretch gap-px divide-x divide-white divide-opacity-5'>
         <div className='flex-1 flex-grow flex justify-center items-stretch p-2'>
           <Button

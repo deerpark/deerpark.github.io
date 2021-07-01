@@ -45,7 +45,7 @@ export default function Cover({
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
             variants={slideInXDelayedVariants}
-            className='text-3xl mb-40 text-center'>
+            className='text-3xl mb-36 text-center'>
             {title && (
               <h2 className='text-3xl text-gray-600 dark:text-gray-400'>
                 <span className='font-title'>{title}</span>

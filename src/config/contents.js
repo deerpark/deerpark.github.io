@@ -277,3 +277,89 @@ export const tech = {
     },
   ],
 }
+
+export const design = [
+  {
+    id: '/design/antman',
+    category: '금융',
+    title: '앤트맨',
+    url: 'https://www.antman.kr',
+    image: 'photo-1611974789855-9c2a0a7236a3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHN0b2NrJTIwdHJhZGV8ZW58MHx8MHx8',
+  },
+  {
+    id: '/design/yonn',
+    category: '오픈소스',
+    title: '포트폴리오',
+    url: 'https://deerpark.github.io',
+    image: 'photo-1458682625221-3a45f8a844c7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHBvcnRmb2xpb3xlbnwwfHwwfHw',
+  },
+]
+
+export const dev = [
+  {
+    id: '/dev/antman',
+    category: '금융',
+    title: '앤트맨',
+    url: 'https://www.antman.kr',
+    image: 'photo-1518186285589-2f7649de83e0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8',
+  },
+  {
+    id: '/dev/livecommerce',
+    category: '커머스',
+    title: '라방 편성표',
+    url: 'https://dev.datadive.ai/live',
+    image: 'photo-1605896405055-0ea7c6dd0d7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8',
+  },
+  {
+    id: '/dev/datadive',
+    category: '데이터 분석',
+    title: '데이터다이브',
+    url: 'https://www.datadive.ai/',
+    image: 'photo-1584291527935-456e8e2dd734?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGRhdGF8ZW58MHx8MHx8',
+  },
+  {
+    id: '/dev/lezhin-rank',
+    category: '엔터테인먼트',
+    title: '레진 랭킹',
+    url: 'https://lezhin-rank.vercel.app/',
+    image: 'photo-1620336655055-088d06e36bf0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y29taWN8ZW58MHx8MHx8',
+  },
+  {
+    id: '/dev/lezhin',
+    category: '엔터테인먼트',
+    title: '레진 코믹스',
+    url: 'https://www.lezhin.com/',
+    image: 'photo-1581515290072-58a77ef204ec?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fGNvbWljfGVufDB8fDB8fA',
+  },
+  {
+    id: '/dev/tapsonic',
+    category: '게임',
+    title: '탭소닉 HTML5',
+    url: 'https://muca.world/TAPSONIC',
+    image: 'photo-1598518142101-11ab82b871a5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmh5dGhtJTIwZ2FtZXxlbnwwfHwwfHw',
+  },
+  {
+    id: '/dev/pmang',
+    category: '게임',
+    title: '네오위즈 피망',
+    url: 'http://www.pmang.com/',
+    image: 'photo-1511512578047-dfb367046420?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjR8fGdhbWV8ZW58MHx8MHx8',
+  },
+]
+
+export const ux = [
+  {
+    id: '/ux/micro-interaction',
+    category: '인터렉션',
+    title: '마이크로 인터렉션',
+    url: '#',
+    image: 'photo-1598121210875-08d6cf351459?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW50ZXJhY3Rpb258ZW58MHx8MHx8',
+  },
+  {
+    id: '/ux/motion',
+    category: '인터렉션',
+    title: '모션 인터렉션',
+    url: '#',
+    image: 'photo-1533136036465-1861830963f6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzJ8fG1vdGlvbnxlbnwwfHwwfHw',
+  },
+]

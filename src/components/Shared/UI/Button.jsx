@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 import { Link, NavLink } from 'react-router-dom'
 
 const THEMES = {
@@ -25,7 +25,7 @@ function Button({
   rounded = 'rounded',
   onClick,
 }) {
-  const classes = classNames(
+  const classes = clsx(
     'inline-flex justify-center items-center font-extrabold text-xl leading-none transition-all hover:ring-opacity-80',
     THEMES[theme],
     width,

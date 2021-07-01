@@ -74,6 +74,7 @@ module.exports = {
       transform: ['hover', 'focus', 'active'],
       display: ['dark'],
       scale: ['hover', 'focus', 'active'],
+      zIndex: ['hover'],
     },
   },
   plugins: [],

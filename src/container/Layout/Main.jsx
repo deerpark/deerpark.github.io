@@ -13,13 +13,13 @@ const Main = () => (
     <Route path='/profile'>
       <Profile />
     </Route>
-    <Route exact path='/ux'>
+    <Route path='/ux'>
       <UX />
     </Route>
     <Route path='/dev'>
       <Dev />
     </Route>
-    <Route exact path='/design'>
+    <Route path='/design'>
       <Design />
     </Route>
   </Switch>

@@ -1,17 +1,18 @@
 import { forwardRef } from 'react'
 import { motion } from 'framer-motion'
-import classNames from 'classnames'
+import clsx from 'clsx'
 
 function Card({ children, className = '', p, rounded = 'sm:rounded-3xl', shadow = 'sm:shadow-lg' }, ref) {
-  const classes = classNames(
-    'bg-white dark:bg-black sm:dark:border xs:dark:border-black xs:dark:border-opacity-5',
-    className,
-    p,
-    shadow,
-    rounded
-  )
   return (
-    <motion.div ref={ref} className={classes}>
+    <motion.div
+      ref={ref}
+      className={clsx(
+        'bg-white dark:bg-black sm:dark:border xs:dark:border-black xs:dark:border-opacity-5',
+        className,
+        p,
+        shadow,
+        rounded
+      )}>
       {children}
     </motion.div>
   )

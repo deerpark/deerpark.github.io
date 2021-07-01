@@ -2,7 +2,7 @@
 import { forwardRef, useMemo } from 'react'
 import { InView } from 'react-intersection-observer'
 import { motion, AnimatePresence } from 'framer-motion'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fadeInVariants } from '../../../config'
 
@@ -110,15 +110,16 @@ function Para(
   },
   paraRef
 ) {
-  const cx = classnames(
-    !compact && px,
-    !compact && py,
-    className,
-    odd && 'bg-gray-50 dark:bg-gray-700 dark:bg-opacity-10',
-    !isLast && divider && 'border-b border-gray-100 dark:border-opacity-10'
-  )
   return (
-    <div className={cx} ref={paraRef}>
+    <div
+      className={clsx(
+        !compact && px,
+        !compact && py,
+        className,
+        odd && 'bg-gray-50 dark:bg-gray-700 dark:bg-opacity-10',
+        !isLast && divider && 'border-b border-gray-100 dark:border-opacity-10'
+      )}
+      ref={paraRef}>
       {animate ? (
         <InView>
           {({ inView, ref }) => (

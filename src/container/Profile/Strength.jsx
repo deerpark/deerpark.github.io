@@ -4,7 +4,7 @@ import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import { Para, Empty } from '../../components/Shared/UI'
 import Client from '../../lib/prismic'
-import { parentVariants, slideInXDelayedVariants } from '../../config'
+import { parentVariants, slideInXDefaultVariants } from '../../config'
 
 export default function Strength() {
   const [strengths, setStrength] = useState()
@@ -34,7 +34,7 @@ export default function Strength() {
           <motion.ul ref={ref} initial='hidden' animate={inView ? 'visible' : 'hidden'} variants={parentVariants}>
             {strengths.length ? (
               strengths.map((strength, i) => (
-                <motion.li key={strength.title} variants={slideInXDelayedVariants}>
+                <motion.li key={strength.title} variants={slideInXDefaultVariants}>
                   <Para
                     odd={!!(i % 2)}
                     title={strength.title}

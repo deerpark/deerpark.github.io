@@ -58,8 +58,8 @@ export const Card = memo(
             <motion.div
               layout
               layoutTransition={isSelected ? openSpring : closeSpring}
-              className='p-7 overflow-y-auto'
-              style={{ minWidth: 344, maxWidth: 524, minHeight: 194, maxHeight: 394 }}>
+              className='p-7 min-w-320 sm:min-w-344 overflow-y-auto'
+              style={{ minHeight: 194, maxHeight: 394 }}>
               <ContentPlaceholder id={id} />
             </motion.div>
           </motion.div>

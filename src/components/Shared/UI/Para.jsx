@@ -4,7 +4,7 @@ import { InView } from 'react-intersection-observer'
 import { motion, AnimatePresence } from 'framer-motion'
 import clsx from 'clsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { fadeInVariants } from '../../../config'
+import { fadeInVariants, fadeInDelayedVariants } from '../../../config'
 
 const COLORS = [
   'text-blue-300',
@@ -107,6 +107,7 @@ function Para(
     iconStyle,
     py = 'py-10',
     px = 'px-7',
+    delay = 0,
   },
   paraRef
 ) {
@@ -129,7 +130,8 @@ function Para(
                 initial='enter'
                 animate={inView ? 'visible' : 'enter'}
                 exit='exit'
-                variants={fadeInVariants}
+                delay={delay}
+                variants={delay ? fadeInDelayedVariants : fadeInVariants}
                 className='flex items-center space-x-5 pb-5'>
                 <ParaContent
                   image={image}

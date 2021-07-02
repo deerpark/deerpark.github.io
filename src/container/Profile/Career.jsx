@@ -8,7 +8,7 @@ import { InView } from 'react-intersection-observer'
 import { useSetRecoilState } from 'recoil'
 import { motion } from 'framer-motion'
 import { Card, Empty } from '../../components/Shared/UI'
-import { parentVariants, slideInXDelayedVariants /* , careers */ } from '../../config'
+import { parentVariants, slideInXDefaultVariants /* , careers */ } from '../../config'
 import Client from '../../lib/prismic'
 import { careerPopupState, careerPopupContentsState } from '../../states'
 
@@ -55,7 +55,7 @@ export default function Career() {
                 variants={parentVariants}>
                 {careers.length ? (
                   careers.map((career, i) => (
-                    <motion.li key={career.company[0].text} variants={slideInXDelayedVariants}>
+                    <motion.li key={career.company[0].text} variants={slideInXDefaultVariants}>
                       <a
                         onClick={() => {
                           setCareerPopup(true)

@@ -4,7 +4,7 @@ import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import Client from '../../lib/prismic'
 import { Para, Empty } from '../../components/Shared/UI'
-import { parentVariants, slideInXDelayedVariants } from '../../config'
+import { parentVariants, slideInXDefaultVariants, slideInXDelayedVariants } from '../../config'
 
 export default function About() {
   const [name, setName] = useState()
@@ -36,6 +36,20 @@ export default function About() {
       <div className='mb-7 bg-white dark:bg-black dark:bg-opacity-10 mx-7 py-5 pl-0 rounded-3xl'>
         <InView>
           {({ inView, ref }) => (
+            <motion.div
+              ref={ref}
+              initial='hidden'
+              animate={inView ? 'visible' : 'hidden'}
+              variants={slideInXDefaultVariants}
+              className='pb-10 pl-16 ml-1'>
+              <h2 className='text-xl text-gray-600 dark:text-gray-400'>
+                <span className='font-title'>기본 정보</span>
+              </h2>
+            </motion.div>
+          )}
+        </InView>
+        <InView>
+          {({ inView, ref }) => (
             <motion.ul
               ref={ref}
               initial='hidden'
@@ -44,7 +58,7 @@ export default function About() {
               className='space-y-5'>
               {about.length ? (
                 about.map((a, i) => (
-                  <motion.li key={a.title} variants={slideInXDelayedVariants}>
+                  <motion.li key={a.title} variants={slideInXDefaultVariants}>
                     <Para
                       title={a.value}
                       desc={a.title}
@@ -73,8 +87,8 @@ export default function About() {
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
             variants={slideInXDelayedVariants}
-            className='text-2xl pt-10 pb-20 text-center'>
-            <h2 className='text-2xl text-gray-600 dark:text-gray-400'>
+            className='pt-10 pl-24'>
+            <h2 className='text-xl text-gray-600 dark:text-gray-400'>
               <span className='font-title'>자기 소개서</span>
             </h2>
             <p className='text-xs text-gray-500'>{name}에 대하여..</p>

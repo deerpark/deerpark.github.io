@@ -287,7 +287,7 @@ export const design = [
     image: 'photo-1611974789855-9c2a0a7236a3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHN0b2NrJTIwdHJhZGV8ZW58MHx8MHx8',
   },
   {
-    id: '/design/yonn',
+    id: '/design/portfolio',
     category: '오픈소스',
     title: '포트폴리오',
     url: 'https://deerpark.github.io',

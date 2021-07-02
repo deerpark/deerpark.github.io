@@ -31,12 +31,33 @@ export const slideInXVariants = {
 /**
  * 지연된 슬라이드 인 애니메이션 설정
  */
+export const slideInXDefaultVariants = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      stiffness: 1000,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    x: 20,
+    transition: {
+      stiffness: 1000,
+    },
+  },
+}
+
+/**
+ * 더 지연된 슬라이드 인 애니메이션 설정
+ */
 export const slideInXDelayedVariants = {
   visible: {
     opacity: 1,
     x: 0,
     transition: {
       stiffness: 1000,
+      delay: 0.7,
     },
   },
   hidden: {
@@ -81,6 +102,25 @@ export const fadeInVariants = {
       duration: 0.8,
     },
   },
+  exit: () => ({
+    opacity: 0,
+  }),
+}
+
+/**
+ * 지연된 페이드 인 애니메이션 설정
+ */
+export const fadeInDelayedVariants = {
+  enter: () => ({
+    opacity: 0,
+  }),
+  visible: delay => ({
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      delay,
+    },
+  }),
   exit: () => ({
     opacity: 0,
   }),

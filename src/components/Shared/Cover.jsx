@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { motion } from 'framer-motion'
-import { slideInXVariants, slideInXDelayedVariants } from '../../config'
+import { slideInXVariants, slideInXDefaultVariants } from '../../config'
 import { titleStickyState, containerHeightState } from '../../states'
 
 export default function Cover({
@@ -44,7 +44,7 @@ export default function Cover({
             ref={ref}
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
-            variants={slideInXDelayedVariants}
+            variants={slideInXDefaultVariants}
             className='text-3xl mb-36 text-center'>
             {title && (
               <h2 className='text-3xl text-gray-600 dark:text-gray-400'>

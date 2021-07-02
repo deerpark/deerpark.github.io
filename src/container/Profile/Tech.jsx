@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
 import { motion } from 'framer-motion'
 import { Para, Empty } from '../../components/Shared/UI'
-import { parentVariants, slideInXDelayedVariants, slideInXVariants /* , tech */ } from '../../config'
+import { parentVariants, slideInXDefaultVariants, slideInXVariants /* , tech */ } from '../../config'
 import Client from '../../lib/prismic'
 import { ReactComponent as IconJS } from '../../assets/icons/icon-js.svg'
 import { ReactComponent as IconWebpack } from '../../assets/icons/icon-webpack.svg'
@@ -67,7 +67,7 @@ export default function Tech() {
           <motion.ul ref={ref} initial='hidden' animate={inView ? 'visible' : 'hidden'} variants={parentVariants}>
             {stack.length ? (
               stack.map((s, i) => (
-                <motion.li key={s.id} variants={slideInXDelayedVariants}>
+                <motion.li key={s.id} variants={slideInXDefaultVariants}>
                   <Para
                     odd={!!(i % 2)}
                     title={s.title}
@@ -108,7 +108,7 @@ export default function Tech() {
           <motion.ul ref={ref} initial='hidden' animate={inView ? 'visible' : 'hidden'} variants={parentVariants}>
             {tools.length ? (
               tools.map((t, i) => (
-                <motion.li key={t.id} variants={slideInXDelayedVariants}>
+                <motion.li key={t.id} variants={slideInXDefaultVariants}>
                   <Para
                     odd={!!(i % 2)}
                     title={t.title}

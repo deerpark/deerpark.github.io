@@ -38,7 +38,11 @@ function Header({ location }) {
   return (
     <>
       <header className='safe-area-inset-padding-top flex items-center transition-all sm:rounded-t-3xl dark:border-b dark:border-gray-500 dark:border-opacity-10'>
-        <div className='w-full relative z-20 flex flex-col'>
+        <motion.div
+          initial={{ y: -32, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className='w-full relative z-20 flex flex-col'>
           <div className='w-full flex items-center p-7'>
             <div className='w-24 flex space-x-4 items-center'>
               <Button as='nav' to='/'>
@@ -62,7 +66,7 @@ function Header({ location }) {
               <ProfileTabs value={profileRoutes.indexOf(pathname) < 0 ? 0 : profileRoutes.indexOf(pathname)} />
             )}
           </AnimatePresence>
-        </div>
+        </motion.div>
         <div className='status-bar-style' />
       </header>
       <AnimatePresence>

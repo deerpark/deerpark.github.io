@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import * as React from 'react'
-import { motion } from 'framer-motion'
+import { memo } from 'react'
 import { Empty } from '../Shared/UI'
 import { MicroInteraction, UxMotion } from '../../container/UX'
 import { AntmanDesign, Portfolio } from '../../container/Design'
@@ -20,8 +19,8 @@ const Contens = {
   '/design/portfolio': <Portfolio />,
 }
 
-export const ContentPlaceholder = React.memo(({ id }) => (
-  <motion.div layout className='content-container' style={{ originY: 0, originX: 0 }}>
+export const ContentPlaceholder = memo(({ id }) => (
+  <div className=''>
     {Contens[id] ? Contens[id] : <Empty className='py-20' msg='데이터가 없습니다.' spin icon={['fat', 'empty-set']} />}
-  </motion.div>
+  </div>
 ))

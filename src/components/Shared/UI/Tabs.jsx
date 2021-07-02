@@ -2,8 +2,14 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect, forwardRef, useCallback, useRef } from 'react'
+import React, { forwardRef, useCallback, useRef } from 'react'
+import { motion, AnimateSharedLayout } from 'framer-motion'
 
+const spring = {
+  type: 'spring',
+  stiffness: 500,
+  damping: 30,
+}
 const sizes = {
   small: {
     spaceX: 'space-x-1',
@@ -51,9 +57,6 @@ const Tabs = forwardRef(
     ref
   ) => {
     const selectedRef = useRef(value)
-    const [translateX, setTranslateX] = useState(0)
-    const indicator = useRef(null)
-    const [width, setWidth] = useState('auto')
     const handleClickTab = useCallback(
       selectedValue => {
         if (onChange) {
@@ -63,42 +66,15 @@ const Tabs = forwardRef(
       },
       [disabled, value]
     )
-    const handleIdicator = useCallback(el => {
-      if (el) {
-        setTranslateX(el.offsetLeft)
-        setWidth(el.clientWidth)
-      }
-    }, [])
 
     const handleClickOption = useCallback(
       option => e => {
         e.preventDefault()
         if (option.disabled) return
-        const el = e.target
-        if (el) {
-          handleIdicator(el)
-        }
         handleClickTab(option)
       },
       []
     )
-
-    const init = useCallback(() => {
-      const el = indicator?.current
-      if (el) {
-        handleIdicator(el.parentNode.childNodes[selectedRef.current])
-      }
-    }, [])
-
-    useEffect(() => {
-      init()
-      window.addEventListener('resize', init, true)
-      window.addEventListener('orientationchange', init, true)
-      return () => {
-        window.removeEventListener('resize', init, true)
-        window.removeEventListener('orientationchange', init, true)
-      }
-    }, [])
 
     const renderTab = useCallback(
       option => {
@@ -109,18 +85,26 @@ const Tabs = forwardRef(
             onClick={handleClickOption(option)}
             className={`tab relative z-10 flex items-center max-w-max ${sizes[size].height} ${
               option.disabled ? 'opacity-50 cursor-default' : 'cursor-pointer'
-            } px-2 rounded truncate font-bold transform ${
+            } px-2 rounded whitespace-nowrap font-bold transform ${
               isSelected ? '' : 'hover:scale-105'
             } transition-all duration-300 ease-in-out ${
               isSelected
                 ? invert
-                  ? 'text-blue-600 dark:text-blue-600'
-                  : 'text-white dark:text-gray-800'
+                  ? 'text-blue-600 dark:text-white'
+                  : 'text-white dark:text-white'
                 : invert
                 ? 'text-gray-400 dark:text-gray-100 hover:text-blue-600'
                 : 'text-blue-900 dark:text-blue-400 text-opacity-40 hover:text-opacity-60'
             }`}>
-            {option.label}
+            <span className='flex relative z-10'>{option.label}</span>
+            {isSelected && (
+              <motion.span
+                initial={false}
+                transition={spring}
+                layoutId='tabs-indicator'
+                className={`tabs-indicator ${sizes[size].rounded} ${invert ? 'bg-blue-100' : 'bg-blue-600'}`}
+              />
+            )}
           </a>
         )
       },
@@ -128,23 +112,18 @@ const Tabs = forwardRef(
     )
 
     return (
-      <div
-        className={`tabs ${className} relative flex w-full ${inline ? 'sm:w-auto sm:inline-flex' : ''} ${
-          align === 'center' ? 'justify-center' : 'justify-start'
-        } items-stretch ${sizes[size].spaceX} ${sizes[size].fontSize} ${invert ? '' : 'bg-transparent'} ${
-          sizes[size].rounded
-        } ${sizes[size].padding}`}
-        ref={ref}
-        style={{ ...style }}>
-        {items && items.map(renderTab)}
-        <span
-          ref={indicator}
-          className={`tabs-indicator transition-all duration-300 ease-in-out absolute z-0 block ${sizes[size].top} ${
-            sizes[size].left
-          } ${sizes[size].height} ${sizes[size].rounded} ${invert ? 'bg-blue-100' : 'bg-blue-600'}`}
-          style={{ width, transform: `translateX(${translateX}px)` }}
-        />
-      </div>
+      <AnimateSharedLayout>
+        <div
+          className={`tabs ${className} relative flex w-full ${inline ? 'sm:w-auto' : ''} ${
+            align === 'center' ? 'justify-center' : 'justify-start'
+          } items-stretch ${sizes[size].spaceX} ${sizes[size].fontSize} ${invert ? '' : 'bg-transparent'} ${
+            sizes[size].rounded
+          } ${sizes[size].padding}`}
+          ref={ref}
+          style={{ ...style }}>
+          {items && items.map(renderTab)}
+        </div>
+      </AnimateSharedLayout>
     )
   }
 )

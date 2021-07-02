@@ -17,13 +17,13 @@
 @layer utilities {
     @variants responsive {
         .text-shadow {
-          text-shadow: 0px 1px 2px black;
+          text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
         }
         .text-shadow-md {
-          text-shadow: 1px 2px 3px black;
+          text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.75);
         }
         .text-shadow-lg {
-          text-shadow: 15px 15px 30px black;
+          text-shadow: 15px 15px 30px rgba(0, 0, 0, 0.75);
         }
         .text-shadow-none {
           text-shadow: none;
@@ -64,6 +64,29 @@ body {
   @apply bg-gray-100 xs:dark:bg-gray-500 xs:dark:bg-opacity-10 w-full max-w-full h-full max-h-screen relative z-10;
 }
 
+.nav-link {
+  &-active {
+    @apply absolute inset-0 bg-white rounded-md m-2;
+  }
+}
+
+.tabs-indicator {
+  @apply absolute inset-0 z-0 block;
+}
+
+.nav-item {
+  &:first-child {
+    .nav-link-active {
+      @apply sm:rounded-bl-2xl;
+    }
+  }
+  &:last-child {
+    .nav-link-active {
+      @apply sm:rounded-br-2xl;
+    }
+  }
+}
+
 .safe-area-inset-top {
   top: calc(env(safe-area-inset-top) * 0.8);
 }
@@ -74,10 +97,6 @@ body {
 
 .safe-area-inset-margin-top {
   margin-top: calc(env(safe-area-inset-top) * 0.8);
-}
-
-.nav-link.active {
-  @apply bg-white dark:bg-blue-600 dark:bg-opacity-50 text-blue-700 dark:text-white;
 }
 
 .inview-in {

@@ -8,7 +8,7 @@ const CardList = props => <List home='/design' contents={design} {...props} />
 
 export default function Design() {
   return (
-    <div className='scroll-contents flex-grow flex-shrink overflow-x-hidden overflow-y-auto'>
+    <div className='scroll-contents flex-grow flex-shrink pt-7 pb-20 overflow-x-hidden overflow-y-auto'>
       <Cover
         title='디자인'
         subTitle='디자인 컨텐츠'

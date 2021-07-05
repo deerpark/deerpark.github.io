@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { useCallback } from 'react'
 import { InView } from 'react-intersection-observer'
 import { useRecoilState, useRecoilValue } from 'recoil'
@@ -12,6 +13,7 @@ export default function Cover({
   minHeight = true,
   subTitle,
   dense,
+  mb = 'mb-36',
   setStickyAnyState = () => {},
 }) {
   const [, setTitleSticky] = useRecoilState(titleStickyState)
@@ -45,7 +47,7 @@ export default function Cover({
             initial='hidden'
             animate={inView ? 'visible' : 'hidden'}
             variants={slideInXDefaultVariants}
-            className='text-3xl mb-36 text-center'>
+            className={clsx(mb, 'text-3xl text-center')}>
             {title && (
               <h2 className='text-3xl text-gray-600 dark:text-gray-400'>
                 <span className='font-title'>{title}</span>

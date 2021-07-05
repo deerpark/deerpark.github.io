@@ -15,7 +15,7 @@ export default function Nav() {
     <motion.div
       initial={{ y: 64 }}
       animate={{ y: 0 }}
-      transition={{ delay: 0.6, ease: 'easeOut' }}
+      transition={{ delay: 0.1, ease: [0, 0.96, 1, 1] }}
       className='nav relative z-30 h-16 flex-none flex justify-center bg-blue-600 dark:bg-black dark:border-t dark:border-white dark:border-opacity-10 rounded-t-md sm:rounded-b-3xl'>
       <menu className='h-full w-full p-0 m-0 flex justify-between items-stretch gap-px divide-x divide-white divide-opacity-5'>
         <AnimateSharedLayout>

@@ -30,7 +30,7 @@ export default function About() {
     }
   }, [])
   return loading ? (
-    <Empty className='py-20' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
+    <Empty className='py-40' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
   ) : (
     <>
       <div className='mb-7 bg-white dark:bg-black dark:bg-opacity-10 mx-7 py-5 pl-0 rounded-3xl'>

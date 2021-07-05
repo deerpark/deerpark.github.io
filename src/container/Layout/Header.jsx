@@ -41,7 +41,7 @@ function Header({ location }) {
         <motion.div
           initial={{ y: -32, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ ease: [0, 0.96, 1, 1] }}
           className='w-full relative z-20 flex flex-col'>
           <div className='w-full flex items-center p-7'>
             <div className='w-24 flex space-x-4 items-center'>

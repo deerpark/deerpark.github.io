@@ -26,7 +26,7 @@ export default function Strength() {
     }
   }, [])
   return loading ? (
-    <Empty className='py-20' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
+    <Empty className='py-40' msg='로딩 중입니다.' spin icon={['fat', 'spinner-third']} iconSize='2x' />
   ) : (
     <>
       <InView>

@@ -26,6 +26,16 @@ module.exports = {
       yellow: colors.amber,
     },
     extend: {
+      blur: {
+        none: '0px',
+        '2xs': '1px',
+        xs: '2px',
+      },
+      grayscale: {
+        25: '25%',
+        50: '50%',
+        75: '75%',
+      },
       width: {
         'card-sm': '359px',
         card: '456px',
@@ -93,6 +103,7 @@ module.exports = {
       scale: ['hover', 'focus', 'active'],
       zIndex: ['hover'],
       transitionProperty: ['hover', 'focus'],
+      blur: ['hover'],
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@
  */
 export const parentVariants = {
   visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
   hidden: {
     transition: { staggerChildren: 0.1, staggerDirection: -1 },
@@ -37,6 +37,7 @@ export const slideInXDefaultVariants = {
     x: 0,
     transition: {
       stiffness: 1000,
+      ease: [0, 0.96, 1, 1],
     },
   },
   hidden: {
@@ -57,7 +58,8 @@ export const slideInXDelayedVariants = {
     x: 0,
     transition: {
       stiffness: 1000,
-      delay: 0.7,
+      delay: 0.5,
+      ease: [0, 0.96, 1, 1],
     },
   },
   hidden: {
@@ -78,13 +80,17 @@ export const slideUpXDelayedVariants = {
     y: 0,
     transition: {
       stiffness: 1000,
+      duration: 0.5,
+      ease: [0, 0.96, 1, 1],
     },
   },
   hidden: {
     opacity: 0,
     y: 20,
     transition: {
-      stiffness: 1000,
+      stiffness: 700,
+      duration: 0.3,
+      ease: [0, 0.96, 1, 1],
     },
   },
 }

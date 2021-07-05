@@ -64,6 +64,23 @@ body {
   @apply bg-gray-100 xs:dark:bg-gray-500 xs:dark:bg-opacity-10 w-full max-w-full h-full max-h-screen relative z-10;
 }
 
+.hilight {
+  @apply bg-yellow-300 text-gray-900;
+}
+
+.subtitle {
+  @apply text-xs text-gray-700 dark:text-gray-300 mb-5;
+}
+
+.card-link {
+  img {
+    @apply filter blur-2xs grayscale-25;
+  }
+  &:hover img, &.cursor-default img {
+    @apply blur-none grayscale-0;
+  }
+}
+
 .nav-link {
   &-active {
     @apply absolute inset-0 bg-white rounded-md m-2;

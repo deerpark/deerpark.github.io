@@ -31,29 +31,27 @@ export const Card = memo(
           ref={ref}
           layout
           className={clsx(
-            isSelected ? 'fixed inset-2 sm:inset-0 overflow-y-auto rounded-3xl' : 'relative w-full h-full'
+            isSelected
+              ? 'fixed inset-2 sm:inset-0 overflow-y-auto rounded-3xl safe-area-inset-margin-top'
+              : 'relative w-full h-full'
           )}>
           <motion.div
             layout
             className={clsx(
-              isSelected
-                ? 'layout w-full h-full relative base:p-7 base:flex base:justify-center base:items-center'
-                : 'w-full h-full rounded-3xl'
+              'w-full h-full',
+              isSelected ? 'relative xs:p-7 xs:flex xs:justify-center xs:items-center' : ''
             )}>
             {isSelected && <Link className='fixed inset-0 z-0' to={home} />}
             <motion.div
               layout
               className={clsx(
                 'w-full h-full relative z-0 rounded-3xl shadow-2xl',
-                isSelected
-                  ? 'min-w-full max-w-full base:min-w-xs base:max-w-xs base:max-h-md2 safe-area-inset-margin-top'
-                  : 'overflow-hidden'
+                isSelected ? 'min-w-full max-w-full xs:min-w-xs xs:max-w-xs xs:max-h-md2' : 'overflow-hidden'
               )}>
-              <motion.div
-                layout
+              <div
                 className={clsx(
                   'rounded-3xl overflow-hidden',
-                  isSelected ? 'relative inset-auto shadow-2xl' : 'absolute inset-0'
+                  isSelected ? 'relative inset-auto' : 'absolute inset-0'
                 )}>
                 {isSelected && (
                   <Link to={home} className='absolute right-7 top-7 z-50'>
@@ -62,7 +60,12 @@ export const Card = memo(
                     </Button>
                   </Link>
                 )}
-                <motion.div layout className='absolute left-7 top-7 z-20 w-screen max-w-sm pointer-events-none'>
+                <motion.div
+                  layout
+                  className={clsx(
+                    'absolute left-7 top-7 z-20 w-screen max-w-sm pointer-events-none',
+                    isSelected ? 'opacity-0 left-40' : 'opacity-100 left-7'
+                  )}>
                   <motion.div layout className='text-white text-xs text-shadow'>
                     {category}
                   </motion.div>
@@ -73,24 +76,31 @@ export const Card = memo(
                 <motion.div
                   layout
                   className='h-60 absolute left-0 top-0 right-0 z-10 rounded-t-3xl overflow-hidden'
-                  style={{ minWidth: 424, maxWidth: 524 }}>
-                  <Link to={id} onClick={handleOpenCard}>
+                  style={{ minWidth: 344 }}>
+                  <Link
+                    className={clsx('card-link', isSelected ? 'cursor-default' : 'cursor-pointer')}
+                    to={id}
+                    onClick={handleOpenCard}>
                     <img
                       className={clsx(
                         'h-60 w-full object-cover transition-all rounded-t-3xl transform ease-out',
-                        isSelected ? 'duration-10000 hover:scale-150' : 'duration-500 hover:scale-110'
+                        isSelected ? 'duration-10000 hover:scale-150 blur-none' : 'duration-500 hover:scale-110'
                       )}
-                      src={`https://images.unsplash.com/${image}&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80`}
+                      src={
+                        image.includes('photo-')
+                          ? `https://images.unsplash.com/${image}&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80`
+                          : image
+                      }
                       alt=''
                     />
                   </Link>
                 </motion.div>
                 <motion.div className='pt-60 pb-7 bg-white dark:bg-gray-800 rounded-3xl'>
-                  <motion.div layout className='p-7 w-card-sm base:w-card min-h-md_'>
+                  <motion.div layout className='p-7 w-card-sm xs:w-card min-h-md_'>
                     <ContentPlaceholder id={id} />
                   </motion.div>
                 </motion.div>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>

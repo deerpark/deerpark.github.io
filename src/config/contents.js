@@ -305,10 +305,10 @@ export const dev = [
   },
   {
     id: '/dev/livecommerce',
-    category: '커머스',
-    title: '라방 편성표',
+    category: 'e-커머스',
+    title: '라자냐',
     url: 'https://dev.datadive.ai/live',
-    image: 'photo-1611403570720-162d8829689a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8',
+    image: '/images/lasagna.png',
   },
   {
     id: '/dev/datadive',

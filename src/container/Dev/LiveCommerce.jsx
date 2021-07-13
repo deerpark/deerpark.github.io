@@ -1,12 +1,32 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Button from '../../components/Shared/UI/Button'
+
 export default function LiveCommerce() {
   return (
     <div className='space-y-10'>
       <div className='space-y-2'>
-        <p className='text-xs text-gray-500 opacity-50'>국내 라방의 모든 스케쥴을 한곳에 담다</p>
-        <h2 className='text-2xl pb-4 text-gray-900 dark:text-gray-200'>
-          <span className='font-title'>라방 편성표</span>
+        <p className='text-xs text-gray-500 opacity-50'>라이브커머스 쉽자냐</p>
+        <h2 className='text-2xl pb-4 text-gray-900 dark:text-gray-200 flex justify-between items-center'>
+          <span className='font-title'>라자냐</span>
+          <div>
+            <Button
+              className='flex space-x-2'
+              as='button'
+              type='button'
+              text='text-sm font-bold'
+              onClick={() => {
+                window.open('https://live.datadive.ai')
+              }}>
+              <span>바로가기</span>
+              <FontAwesomeIcon icon={['fas', 'angle-right']} />
+            </Button>
+          </div>
         </h2>
-        <p className='text-sm text-gray-500 opacity-75'>라이브커머스 한곳에서 볼수 없을까?</p>
+        <p className='text-sm text-gray-500 opacity-75'>
+          라이브커머스 한곳에서 볼수 없을까?
+          <br />
+          국내 라방의 모든 스케쥴을 한곳에 담다
+        </p>
       </div>
       <div className=''>
         <h2 className='subtitle'>

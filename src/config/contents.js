@@ -280,6 +280,13 @@ export const tech = {
 
 export const design = [
   {
+    id: '/design/boltux',
+    category: 'IT',
+    title: 'BOLT UX',
+    url: 'https://www.bolt-ux.com',
+    image: '/images/boltux.png',
+  },
+  {
     id: '/design/antman',
     category: '금융',
     title: '앤트맨',
@@ -296,6 +303,13 @@ export const design = [
 ]
 
 export const dev = [
+  {
+    id: '/dev/boltux',
+    category: 'IT',
+    title: 'BOLT UX',
+    url: 'https://www.bolt-ux.com',
+    image: '/images/boltux.png',
+  },
   {
     id: '/dev/antman',
     category: '금융',

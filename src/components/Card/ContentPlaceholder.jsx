@@ -3,7 +3,7 @@ import { memo } from 'react'
 import { Empty } from '../Shared/UI'
 import { MicroInteraction, UxMotion } from '../../container/UX'
 import { AntmanDesign, Portfolio } from '../../container/Design'
-import { Antman, LiveCommerce, Datadive, LezhinRank, LezhinComics, TapSonic, Pmang } from '../../container/Dev'
+import { Antman, LiveCommerce, Datadive, LezhinRank, LezhinComics, TapSonic, Pmang, BoltUx } from '../../container/Dev'
 
 const Contens = {
   '/ux/micro-interaction': <MicroInteraction />,
@@ -15,8 +15,10 @@ const Contens = {
   '/dev/lezhin': <LezhinComics />,
   '/dev/tapsonic': <TapSonic />,
   '/dev/pmang': <Pmang />,
+  '/dev/boltux': <BoltUx />,
   '/design/antman': <AntmanDesign />,
   '/design/portfolio': <Portfolio />,
+  '/design/boltux': <BoltUx />,
 }
 
 export const ContentPlaceholder = memo(({ id }) => (
